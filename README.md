@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Room Lounge Cafe
 
-## Getting Started
+Premium website + reservation system + admin dashboard për **Room Lounge Cafe** (Lipjan, Kosovë).
 
-First, run the development server:
+## Stack
+- Next.js 16 (App Router · TypeScript · Turbopack)
+- Tailwind CSS v4
+- Prisma + SQLite
+- JWT auth (jose) për admin panel
+- WhatsApp deep-link confirmation workflow
+
+## Setup
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npx prisma generate
+npx prisma db push
+npm run seed       # krijon admin + tables + menu + events default
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Admin
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- URL: `/admin/login`
+- Email: `admin@roomloungecafe.com`
+- Password: `room2007` ← **ndrysho në production**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Faqet Publike
 
-## Learn More
+| Path | Përshkrim |
+|------|-----------|
+| `/` | Homepage premium (hero + brand story + drinks + events + gallery + map) |
+| `/about` | Story 18-vjeçar + vlerat + timeline |
+| `/menu` | Menu i plotë (DB-driven, me fallback) |
+| `/events` | Live music, DJ nights, sports |
+| `/gallery` | Galeri (DB-driven, me fallback tiles) |
+| `/reservation` | Form rezervimi me 9 fusha + validim |
+| `/contact` | Kontakt + Google Maps embed |
 
-To learn more about Next.js, take a look at the following resources:
+## Admin Panel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Path | Përshkrim |
+|------|-----------|
+| `/admin` | Dashboard me statistika + rezervime për sot |
+| `/admin/reservations` | Menaxhim i plotë (approve, reject, complete, no-show, note, WA confirm) |
+| `/admin/events` | CRUD eventeve · publish/draft |
+| `/admin/menu` | CRUD menu items |
+| `/admin/tables` | CRUD tavolinash · zona, kapacitet, disponueshmëri |
+| `/admin/gallery` | Upload + delete fotosh (në `public/uploads/`) |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## WhatsApp Workflow
 
-## Deploy on Vercel
+Çdo rezervim ka 2 butona në admin panel:
+- **Konfirmo + WhatsApp** → ndryshon statusin në `confirmed` + hap deep-link me mesazh konfirmimi
+- **Refuzo + WhatsApp** → ndryshon statusin në `rejected` + hap deep-link me mesazh refuzimi
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Mesazhet janë në Shqip, me datën formatuar `sq-AL`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Database Models
+
+`AdminUser` · `Table` · `Reservation` · `Event` · `MenuItem` · `GalleryImage` · `Setting`
+
+## Production Notes
+
+1. Ndrysho `.env`:
+   - `DATABASE_URL` (Postgres për prod, p.sh. Supabase / Neon)
+   - `JWT_SECRET` (random string i ri)
+   - `NEXT_PUBLIC_BUSINESS_*` (numri real, social handles)
+2. Për Postgres: ndrysho `prisma/schema.prisma` `provider = "postgresql"` dhe re-migro.
+3. Ndrysho admin password përmes seed ose direkt në DB.
+4. Konsidero rate-limit në `/api/reservations` (Upstash Redis ose Vercel KV).
+5. Për WhatsApp Business API: zëvendëso deep-link me Twilio/Meta Cloud API call.
+
+## SEO
+
+- Open Graph + Twitter cards në `layout.tsx`
+- Keywords në Shqip + English
+- Server-rendered pa hidratim të nevojshëm për content statik
+- Albanian-first; English version mund të shtohet me i18n routing
+
+---
+
+**18 vite në zemër të Lipjanit. ☕**
