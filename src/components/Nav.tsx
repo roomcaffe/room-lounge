@@ -30,6 +30,19 @@ export function Nav() {
     setOpen(false);
   }, [pathname]);
 
+  // Lock body scroll when mobile menu open
+  useEffect(() => {
+    if (typeof document === "undefined") return;
+    if (open) {
+      document.documentElement.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "";
+    }
+    return () => {
+      document.documentElement.style.overflow = "";
+    };
+  }, [open]);
+
   return (
     <>
       <header
@@ -56,7 +69,7 @@ export function Nav() {
             </div>
             <div className="flex flex-col leading-none">
               <span className="font-display text-base md:text-lg tracking-tight">Room</span>
-              <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-[color:var(--cream-soft)]/60 mt-0.5 hidden xs:block">
+              <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-[color:var(--cream-soft)]/60 mt-0.5 hidden sm:block">
                 Lounge · Lipjan
               </span>
             </div>
@@ -92,7 +105,7 @@ export function Nav() {
           <div className="flex items-center gap-2 md:gap-3">
             <Link
               href="/reserve"
-              className="btn-primary !py-2 !px-4 md:!py-2.5 md:!px-5 !text-[11px] md:!text-xs !min-h-0"
+              className="btn-primary !py-2 !px-3.5 md:!py-2.5 md:!px-5 !text-[10px] md:!text-xs !min-h-0 !tracking-[0.08em] md:!tracking-[0.12em]"
             >
               Rezervo
             </Link>
@@ -109,32 +122,37 @@ export function Nav() {
 
       {/* Mobile menu */}
       <div
-        className={`fixed inset-0 z-[60] transition-all duration-500 ${
-          open ? "pointer-events-auto" : "pointer-events-none"
+        aria-hidden={!open}
+        className={`fixed inset-0 z-[60] transition-opacity duration-500 ${
+          open
+            ? "opacity-100 pointer-events-auto visible"
+            : "opacity-0 pointer-events-none invisible"
         }`}
       >
         <div
-          className={`absolute inset-0 bg-[color:var(--obsidian)] transition-opacity duration-500 ${
-            open ? "opacity-100" : "opacity-0"
-          }`}
+          className="absolute inset-0 bg-[color:var(--obsidian)]"
           onClick={() => setOpen(false)}
         />
         <div
-          className={`relative h-full flex flex-col justify-between p-8 transition-transform duration-700 ${
+          className={`relative h-full max-h-[100svh] flex flex-col justify-between p-6 md:p-8 transition-transform duration-700 ${
             open ? "translate-y-0" : "-translate-y-4"
           }`}
+          style={{
+            paddingTop: "calc(1.25rem + env(safe-area-inset-top))",
+            paddingBottom: "calc(1.25rem + env(safe-area-inset-bottom))",
+          }}
         >
           <div className="flex items-center justify-between">
             <span className="font-display text-2xl">Room</span>
             <button
               onClick={() => setOpen(false)}
-              className="p-2"
+              className="p-2 -mr-2"
               aria-label="Close menu"
             >
               <X size={24} />
             </button>
           </div>
-          <nav className="flex flex-col gap-0">
+          <nav className="flex flex-col gap-0 my-6">
             {links.map((link, i) => (
               <Link
                 key={link.href}

@@ -25,12 +25,14 @@ export function Hero() {
       <div className="absolute inset-0 bg-gradient-to-b from-[color:var(--obsidian)]/40 via-transparent to-[color:var(--obsidian)] z-10 pointer-events-none" />
 
       {/* Top live vibe — below nav, full-width on mobile */}
-      <div className="absolute top-[5.5rem] md:top-24 inset-x-4 md:inset-x-auto md:right-10 z-30 flex justify-center md:justify-end">
-        <LiveVibe />
+      <div className="absolute top-[5rem] md:top-24 inset-x-4 md:inset-x-auto md:right-10 z-30 flex justify-center md:justify-end pointer-events-none">
+        <div className="pointer-events-auto max-w-full">
+          <LiveVibe />
+        </div>
       </div>
 
       {/* Hero content */}
-      <div className="relative z-20 container-edge min-h-[100svh] flex flex-col justify-end pt-40 pb-24 md:pb-32">
+      <div className="relative z-20 container-edge min-h-[100svh] flex flex-col justify-end pt-44 md:pt-40 pb-28 md:pb-32">
         <span
           className="text-eyebrow mb-6 opacity-0"
           style={{

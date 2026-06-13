@@ -16,7 +16,8 @@ export function FloatingActions() {
   }, []);
 
   // Hide the mobile sticky CTA on pages where it doesn't make sense
-  const hideStickyCta = pathname === "/reserve" || pathname?.startsWith("/admin");
+  const hideStickyCta =
+    pathname === "/reserve" || pathname?.startsWith("/admin");
   const wa = process.env.NEXT_PUBLIC_BUSINESS_WHATSAPP || "38344000000";
   const waLink = `https://wa.me/${wa}?text=${encodeURIComponent(
     "Përshëndetje Room Lounge, dua të rezervoj një tavolinë."
@@ -57,15 +58,15 @@ export function FloatingActions() {
       {!hideStickyCta && (
         <div
           style={{
-            paddingBottom: "calc(1rem + env(safe-area-inset-bottom))",
+            paddingBottom: "calc(0.875rem + env(safe-area-inset-bottom))",
           }}
-          className={`fixed bottom-0 inset-x-0 z-30 md:hidden px-4 pt-4 bg-gradient-to-t from-[color:var(--obsidian)] via-[color:var(--obsidian)]/95 to-transparent transition-all duration-500 ${
+          className={`fixed bottom-0 inset-x-0 z-30 md:hidden px-4 pt-5 bg-gradient-to-t from-[color:var(--obsidian)] via-[color:var(--obsidian)]/95 to-transparent transition-all duration-500 ${
             show
               ? "translate-y-0 opacity-100"
               : "translate-y-full opacity-0 pointer-events-none"
           }`}
         >
-          <Link href="/reserve" className="btn-primary w-full">
+          <Link href="/reserve" className="btn-primary w-full justify-center !text-xs">
             Rezervo Tavolinën
           </Link>
         </div>

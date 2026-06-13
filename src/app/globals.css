@@ -431,10 +431,17 @@ body.cursor-hover .cursor-ring {
   a.inline, button.inline { min-height: 0; }
 }
 
-/* Mobile-only bottom padding for content above floating CTA */
+/* Mobile-only bottom padding for content above floating CTA.
+   Footer must clear the sticky reservation bar (~5rem + safe-area). */
 @media (max-width: 767px) {
   main { padding-bottom: env(safe-area-inset-bottom); }
+  footer { padding-bottom: calc(env(safe-area-inset-bottom) + 5.5rem); }
   .has-mobile-cta { padding-bottom: calc(env(safe-area-inset-bottom) + 5rem); }
+}
+
+/* When on /reserve or /admin pages, footer doesn't need extra clearance */
+html[data-no-sticky-cta] footer {
+  padding-bottom: env(safe-area-inset-bottom) !important;
 }
 
 /* Number ticker (chapter index) */

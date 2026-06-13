@@ -397,20 +397,20 @@ export function ReserveForm() {
       </AnimatePresence>
 
       {/* Footer nav */}
-      <div className="flex items-center justify-between pt-4 border-t border-[color:var(--line)]">
+      <div className="flex items-center justify-between gap-3 pt-4 border-t border-[color:var(--line)]">
         <button
           onClick={() => setStep((s) => Math.max(0, s - 1))}
           disabled={step === 0}
-          className="btn-ghost disabled:opacity-30 disabled:pointer-events-none"
+          className="btn-ghost !px-4 !py-2.5 md:!px-6 md:!py-3 !text-[10px] md:!text-xs shrink-0 disabled:opacity-30 disabled:pointer-events-none"
         >
-          <ArrowLeft size={14} /> Mbrapa
+          <ArrowLeft size={14} /> <span className="hidden xs:inline">Mbrapa</span>
         </button>
 
         {step < STEPS.length - 1 ? (
           <button
             onClick={() => setStep((s) => Math.min(STEPS.length - 1, s + 1))}
             disabled={!canNext}
-            className="btn-primary disabled:opacity-30 disabled:pointer-events-none"
+            className="btn-primary !px-5 !py-2.5 md:!px-7 md:!py-3 !text-[11px] md:!text-xs flex-1 max-w-[12rem] justify-center disabled:opacity-30 disabled:pointer-events-none"
           >
             Vazhdo <ArrowRight size={14} />
           </button>
@@ -418,9 +418,9 @@ export function ReserveForm() {
           <button
             onClick={submit}
             disabled={!canNext || submitting}
-            className="btn-primary disabled:opacity-30 disabled:pointer-events-none"
+            className="btn-primary !px-5 !py-2.5 md:!px-7 md:!py-3 !text-[11px] md:!text-xs flex-1 max-w-[14rem] justify-center disabled:opacity-30 disabled:pointer-events-none"
           >
-            {submitting ? "Po dërgohet..." : "Konfirmo Rezervimin"} <Check size={14} />
+            {submitting ? "Po dërgohet..." : "Konfirmo"} <Check size={14} />
           </button>
         )}
       </div>

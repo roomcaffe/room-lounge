@@ -36,8 +36,8 @@ export function Footer() {
 
       <div className="container-edge relative">
         {/* Big wordmark */}
-        <div className="pt-16 md:pt-20 pb-10 md:pb-16">
-          <h2 className="text-display-xl text-gradient leading-none mask-fade-bottom">
+        <div className="pt-14 md:pt-20 pb-10 md:pb-16">
+          <h2 className="text-display-lg md:text-display-xl text-gradient leading-none mask-fade-bottom break-words">
             Room
             <span className="block text-[color:var(--cream-soft)]/30">Lounge</span>
           </h2>
