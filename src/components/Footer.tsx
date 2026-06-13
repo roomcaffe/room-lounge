@@ -36,22 +36,22 @@ export function Footer() {
 
       <div className="container-edge relative">
         {/* Big wordmark */}
-        <div className="pt-20 pb-16">
+        <div className="pt-16 md:pt-20 pb-10 md:pb-16">
           <h2 className="text-display-xl text-gradient leading-none mask-fade-bottom">
             Room
             <span className="block text-[color:var(--cream-soft)]/30">Lounge</span>
           </h2>
-          <p className="mt-6 text-[color:var(--cream-soft)]/60 max-w-md text-pretty">
+          <p className="mt-5 md:mt-6 text-[color:var(--cream-soft)]/60 max-w-md text-pretty text-sm md:text-base">
             Mbi 18 vite në Lipjan. Vendi ku gjeneratat takohen, miqësitë lindin
             dhe momentet bëhen kujtime.
           </p>
         </div>
 
         {/* Grid */}
-        <div className="grid lg:grid-cols-12 gap-12 pb-16">
+        <div className="grid grid-cols-2 lg:grid-cols-12 gap-6 md:gap-10 lg:gap-12 pb-12 md:pb-16">
           {/* CTA card */}
-          <div className="lg:col-span-5">
-            <div className="glass rounded-3xl p-8">
+          <div className="col-span-2 lg:col-span-5">
+            <div className="glass rounded-3xl p-6 md:p-8">
               <span className="text-eyebrow">Rezervo</span>
               <h3 className="font-display text-3xl mt-3 leading-tight">
                 Tavolina jote të pret.
@@ -71,7 +71,7 @@ export function Footer() {
 
           {/* Nav columns */}
           {navColumns.map((col) => (
-            <div key={col.title} className="lg:col-span-2">
+            <div key={col.title} className="col-span-1 lg:col-span-2">
               <h4 className="text-eyebrow mb-5">{col.title}</h4>
               <ul className="space-y-3">
                 {col.links.map((l) => (
@@ -89,7 +89,7 @@ export function Footer() {
           ))}
 
           {/* Contact */}
-          <div className="lg:col-span-3">
+          <div className="col-span-2 lg:col-span-3">
             <h4 className="text-eyebrow mb-5">Kontakti</h4>
             <ul className="space-y-3 text-sm text-[color:var(--cream-soft)]/80">
               <li className="flex items-start gap-3">

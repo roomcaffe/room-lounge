@@ -110,18 +110,18 @@ export function ReserveForm() {
   return (
     <div className="space-y-8">
       {/* Step indicator */}
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-between gap-1">
         {STEPS.map((s, i) => (
-          <div key={s} className="flex items-center flex-1 last:flex-none">
+          <div key={s} className="flex items-center flex-1 last:flex-none min-w-0">
             <button
               onClick={() => i < step && setStep(i)}
               disabled={i > step}
-              className={`flex items-center gap-3 transition-opacity ${
+              className={`flex items-center gap-2 md:gap-3 transition-opacity min-w-0 ${
                 i > step ? "opacity-30" : "opacity-100"
               }`}
             >
               <span
-                className={`w-8 h-8 rounded-full border flex items-center justify-center font-mono text-xs transition-all ${
+                className={`w-8 h-8 shrink-0 rounded-full border flex items-center justify-center font-mono text-[10px] md:text-xs transition-all ${
                   i === step
                     ? "bg-[color:var(--ember)] border-[color:var(--ember)] text-[color:var(--obsidian)]"
                     : i < step
@@ -131,12 +131,12 @@ export function ReserveForm() {
               >
                 {i < step ? <Check size={14} /> : String(i + 1).padStart(2, "0")}
               </span>
-              <span className={`text-eyebrow !text-xs ${i === step ? "!text-[color:var(--cream)]" : ""}`}>
+              <span className={`text-eyebrow !text-[10px] md:!text-xs hidden sm:inline ${i === step ? "!text-[color:var(--cream)]" : ""}`}>
                 {s}
               </span>
             </button>
             {i < STEPS.length - 1 && (
-              <div className="flex-1 mx-4 h-px bg-[color:var(--line-strong)]" />
+              <div className="flex-1 mx-2 md:mx-4 h-px bg-[color:var(--line-strong)] min-w-2" />
             )}
           </div>
         ))}
@@ -162,14 +162,14 @@ export function ReserveForm() {
                 <p className="text-sm text-[color:var(--cream-soft)]/60">14 ditët e ardhshme</p>
               </div>
 
-              <div className="grid grid-cols-7 gap-2">
+              <div className="hscroll md:hscroll-none flex md:grid md:grid-cols-7 gap-2 -mx-4 px-4 md:mx-0 md:px-0 pb-2">
                 {days.map((d) => {
                   const isSelected = date?.getTime() === d.getTime();
                   return (
                     <button
                       key={d.toISOString()}
                       onClick={() => setDate(d)}
-                      className={`rounded-2xl p-3 text-center transition-all duration-300 ${
+                      className={`shrink-0 w-16 md:w-auto rounded-2xl p-3 text-center transition-all duration-300 ${
                         isSelected
                           ? "bg-[color:var(--ember)] text-[color:var(--obsidian)]"
                           : "glass hover:bg-[color:var(--cream)]/8"
@@ -198,7 +198,7 @@ export function ReserveForm() {
                     <Clock className="text-[color:var(--ember)]" size={26} />
                     Ora
                   </h3>
-                  <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2">
+                  <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-2">
                     {TIMES.map((t) => (
                       <button
                         key={t}
@@ -228,19 +228,19 @@ export function ReserveForm() {
                 <p className="text-sm text-[color:var(--cream-soft)]/60">Përfshirë ty</p>
               </div>
 
-              <div className="flex items-center gap-8">
+              <div className="flex items-center gap-4 sm:gap-8">
                 <button
                   onClick={() => setGuests(Math.max(1, guests - 1))}
-                  className="w-14 h-14 rounded-full glass flex items-center justify-center text-2xl font-display hover:bg-[color:var(--cream)]/10 transition-all"
+                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-full glass flex items-center justify-center text-2xl font-display hover:bg-[color:var(--cream)]/10 transition-all"
                 >
                   −
                 </button>
-                <div className="font-display text-9xl text-gradient-ember leading-none w-32 text-center tabular-nums">
+                <div className="font-display text-7xl sm:text-8xl md:text-9xl text-gradient-ember leading-none w-24 sm:w-32 text-center tabular-nums">
                   {guests}
                 </div>
                 <button
                   onClick={() => setGuests(Math.min(20, guests + 1))}
-                  className="w-14 h-14 rounded-full glass flex items-center justify-center text-2xl font-display hover:bg-[color:var(--cream)]/10 transition-all"
+                  className="w-12 h-12 sm:w-14 sm:h-14 rounded-full glass flex items-center justify-center text-2xl font-display hover:bg-[color:var(--cream)]/10 transition-all"
                 >
                   +
                 </button>
@@ -286,15 +286,15 @@ export function ReserveForm() {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="glass rounded-2xl p-4 flex items-center justify-between"
+                  className="glass rounded-2xl p-4 flex items-center justify-between gap-3"
                 >
-                  <div>
+                  <div className="min-w-0">
                     <div className="text-eyebrow !text-[color:var(--ember)]">E zgjedhur</div>
-                    <div className="font-display text-2xl mt-1">
-                      {table.name} · {table.area.toUpperCase()} · {table.capacity} persona
+                    <div className="font-display text-xl md:text-2xl mt-1 truncate">
+                      {table.name} · {table.area.toUpperCase()} · {table.capacity} pers.
                     </div>
                   </div>
-                  <Sparkles className="text-[color:var(--ember)]" />
+                  <Sparkles className="text-[color:var(--ember)] shrink-0" />
                 </motion.div>
               )}
             </div>

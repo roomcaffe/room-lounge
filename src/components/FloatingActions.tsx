@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function FloatingActions() {
   const [show, setShow] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setShow(window.scrollY > 280);
@@ -13,6 +15,8 @@ export function FloatingActions() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Hide the mobile sticky CTA on pages where it doesn't make sense
+  const hideStickyCta = pathname === "/reserve" || pathname?.startsWith("/admin");
   const wa = process.env.NEXT_PUBLIC_BUSINESS_WHATSAPP || "38344000000";
   const waLink = `https://wa.me/${wa}?text=${encodeURIComponent(
     "Përshëndetje Room Lounge, dua të rezervoj një tavolinë."
@@ -26,11 +30,14 @@ export function FloatingActions() {
         target="_blank"
         rel="noreferrer"
         aria-label="WhatsApp"
-        className={`fixed bottom-6 right-6 z-40 group transition-all duration-500 ${
+        style={{
+          bottom: "calc(1.5rem + env(safe-area-inset-bottom))",
+        }}
+        className={`fixed right-4 md:right-6 z-40 group transition-all duration-500 ${
           show
             ? "translate-y-0 opacity-100"
             : "translate-y-10 opacity-0 pointer-events-none"
-        }`}
+        } ${!hideStickyCta ? "md:bottom-6 mb-20 md:mb-0" : ""}`}
       >
         <div className="relative w-14 h-14 rounded-full glass-strong flex items-center justify-center hover:scale-110 transition-transform duration-500">
           <span className="absolute inset-0 rounded-full bg-[#25D366]/20 animate-pulse-soft" />
@@ -47,17 +54,22 @@ export function FloatingActions() {
       </a>
 
       {/* Sticky mobile reservation */}
-      <div
-        className={`fixed bottom-0 inset-x-0 z-30 md:hidden p-4 pb-6 bg-gradient-to-t from-[color:var(--obsidian)] via-[color:var(--obsidian)]/95 to-transparent transition-all duration-500 ${
-          show
-            ? "translate-y-0 opacity-100"
-            : "translate-y-10 opacity-0 pointer-events-none"
-        }`}
-      >
-        <Link href="/reserve" className="btn-primary w-full justify-center">
-          Rezervo Tavolinën
-        </Link>
-      </div>
+      {!hideStickyCta && (
+        <div
+          style={{
+            paddingBottom: "calc(1rem + env(safe-area-inset-bottom))",
+          }}
+          className={`fixed bottom-0 inset-x-0 z-30 md:hidden px-4 pt-4 bg-gradient-to-t from-[color:var(--obsidian)] via-[color:var(--obsidian)]/95 to-transparent transition-all duration-500 ${
+            show
+              ? "translate-y-0 opacity-100"
+              : "translate-y-full opacity-0 pointer-events-none"
+          }`}
+        >
+          <Link href="/reserve" className="btn-primary w-full">
+            Rezervo Tavolinën
+          </Link>
+        </div>
+      )}
     </>
   );
 }

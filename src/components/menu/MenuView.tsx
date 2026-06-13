@@ -52,21 +52,23 @@ export function MenuView({ items }: { items: Item[] }) {
         </p>
       </header>
 
-      {/* Categories */}
-      <div className="flex flex-wrap gap-2 mb-12 sticky top-20 z-30 py-3 -mx-4 px-4 bg-[color:var(--obsidian)]/80 backdrop-blur-md">
-        {categories.map((cat) => (
-          <button
-            key={cat}
-            onClick={() => setActive(cat)}
-            className={`px-5 py-2.5 rounded-full text-sm font-medium uppercase tracking-wider transition-all duration-500 ${
-              active === cat
-                ? "bg-[color:var(--ember)] text-[color:var(--obsidian)]"
-                : "glass hover:bg-[color:var(--cream)]/8"
-            }`}
-          >
-            {CATEGORY_LABELS[cat]?.label || cat}
-          </button>
-        ))}
+      {/* Categories — horizontal scroll on mobile */}
+      <div className="sticky top-16 md:top-20 z-30 py-3 -mx-4 md:-mx-6 lg:-mx-12 px-4 md:px-6 lg:px-12 bg-[color:var(--obsidian)]/85 backdrop-blur-md mb-10">
+        <div className="hscroll md:flex md:flex-wrap flex gap-2">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActive(cat)}
+              className={`shrink-0 px-4 md:px-5 py-2.5 rounded-full text-xs md:text-sm font-medium uppercase tracking-wider transition-all duration-500 ${
+                active === cat
+                  ? "bg-[color:var(--ember)] text-[color:var(--obsidian)]"
+                  : "glass hover:bg-[color:var(--cream)]/8"
+              }`}
+            >
+              {CATEGORY_LABELS[cat]?.label || cat}
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Section header */}
@@ -90,7 +92,7 @@ export function MenuView({ items }: { items: Item[] }) {
           )}
 
           {/* Items grid */}
-          <div className="grid md:grid-cols-2 gap-x-12 gap-y-8">
+          <div className="grid md:grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-6 md:gap-y-8">
             {filtered.length === 0 && (
               <p className="col-span-2 text-[color:var(--cream-soft)]/60 italic">
                 Asnjë artikull në këtë kategori për momentin.
@@ -108,12 +110,12 @@ export function MenuView({ items }: { items: Item[] }) {
                 }}
                 className="group relative py-5 border-b border-[color:var(--line)] hover:border-[color:var(--ember)] transition-colors"
               >
-                <div className="flex items-baseline gap-4">
-                  <h3 className="font-display text-2xl flex-1 group-hover:text-[color:var(--cream)] transition-colors">
+                <div className="flex items-baseline gap-3 md:gap-4">
+                  <h3 className="font-display text-xl md:text-2xl flex-1 min-w-0 group-hover:text-[color:var(--cream)] transition-colors">
                     {item.name}
                   </h3>
                   <span className="hidden md:block flex-1 border-b border-dotted border-[color:var(--line-strong)] mb-1.5" />
-                  <span className="font-mono text-lg text-[color:var(--ember)] tabular-nums">
+                  <span className="font-mono text-base md:text-lg text-[color:var(--ember)] tabular-nums shrink-0">
                     €{item.price.toFixed(2)}
                   </span>
                 </div>

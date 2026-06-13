@@ -95,10 +95,10 @@ export function EventsView({ events }: { events: Event[] }) {
                 }}
                 className="group relative rounded-3xl overflow-hidden border border-[color:var(--line)] hover:border-[color:var(--ember)] transition-colors duration-500"
               >
-                <div className="relative grid md:grid-cols-12 gap-6 p-6 md:p-8">
+                <div className="relative grid md:grid-cols-12 gap-4 md:gap-6 p-5 md:p-8">
                   {/* Date column */}
                   <div className="md:col-span-2">
-                    <div className="glass-strong rounded-2xl p-4 text-center inline-flex flex-col items-center">
+                    <div className="glass-strong rounded-2xl p-3 md:p-4 text-center inline-flex flex-col items-center">
                       <span className="text-eyebrow !text-[color:var(--ember)]">
                         {d.toLocaleString("sq-AL", { month: "short" })}
                       </span>
@@ -113,7 +113,7 @@ export function EventsView({ events }: { events: Event[] }) {
 
                   {/* Content */}
                   <div className="md:col-span-7">
-                    <h3 className="font-display text-3xl md:text-4xl leading-tight text-balance group-hover:text-[color:var(--cream)] transition-colors">
+                    <h3 className="font-display text-2xl md:text-4xl leading-tight text-balance group-hover:text-[color:var(--cream)] transition-colors">
                       {ev.title}
                     </h3>
                     {ev.artist && (
@@ -137,7 +137,7 @@ export function EventsView({ events }: { events: Event[] }) {
 
                   {/* CTA */}
                   <div className="md:col-span-3 flex md:justify-end md:items-center">
-                    <Link href="/reserve" className="btn-primary !text-xs !py-2.5 !px-5">
+                    <Link href="/reserve" className="btn-primary !text-xs !py-2.5 !px-5 !min-h-0">
                       Rezervo <ArrowUpRight size={14} />
                     </Link>
                   </div>

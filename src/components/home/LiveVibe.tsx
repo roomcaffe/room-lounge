@@ -90,16 +90,16 @@ export function LiveVibe() {
         : "rgba(244,234,216,0.3)";
 
   return (
-    <div className="glass rounded-2xl px-4 py-3 inline-flex items-center gap-3">
+    <div className="glass rounded-full md:rounded-2xl px-3 py-2 md:px-4 md:py-3 inline-flex items-center gap-2.5 md:gap-3 max-w-full">
       <span
-        className="inline-block w-2 h-2 rounded-full animate-pulse-soft"
+        className="inline-block w-2 h-2 rounded-full animate-pulse-soft shrink-0"
         style={{ background: dotColor, boxShadow: `0 0 12px ${dotColor}` }}
       />
-      <div className="leading-tight">
-        <div className="text-xs font-mono uppercase tracking-[0.2em] text-[color:var(--cream)]">
+      <div className="leading-tight min-w-0">
+        <div className="text-[10px] md:text-xs font-mono uppercase tracking-[0.18em] md:tracking-[0.2em] text-[color:var(--cream)] truncate">
           {vibe.message}
         </div>
-        <div className="text-[10px] text-[color:var(--cream-soft)]/60 mt-0.5">
+        <div className="text-[9px] md:text-[10px] text-[color:var(--cream-soft)]/60 mt-0.5 truncate">
           {vibe.detail} · {time}
         </div>
       </div>

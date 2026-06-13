@@ -47,7 +47,7 @@ export function Drinks() {
           </Link>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
           {drinks.map((drink, i) => (
             <motion.div
               key={drink.name}
@@ -66,19 +66,19 @@ export function Drinks() {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(217,121,66,0.4),transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
               {/* Content */}
-              <div className="absolute inset-0 p-6 flex flex-col justify-between">
+              <div className="absolute inset-0 p-4 md:p-6 flex flex-col justify-between">
                 <div className="flex items-start justify-between">
                   <span className="text-eyebrow !text-[color:var(--cream)]">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="font-mono text-xs glass px-3 py-1 rounded-full">
+                  <span className="font-mono text-[10px] md:text-xs glass px-2.5 md:px-3 py-1 rounded-full">
                     €{drink.price}
                   </span>
                 </div>
 
                 <div>
-                  <h3 className="font-display text-3xl leading-tight">{drink.name}</h3>
-                  <p className="mt-2 text-sm text-[color:var(--cream-soft)]/80 leading-relaxed line-clamp-2 group-hover:text-[color:var(--cream)] transition-colors">
+                  <h3 className="font-display text-xl md:text-3xl leading-tight">{drink.name}</h3>
+                  <p className="mt-1.5 md:mt-2 text-xs md:text-sm text-[color:var(--cream-soft)]/80 leading-relaxed line-clamp-2 group-hover:text-[color:var(--cream)] transition-colors">
                     {drink.desc}
                   </p>
                 </div>

@@ -5,6 +5,9 @@
    ============================================ */
 
 @theme {
+  /* Breakpoints */
+  --breakpoint-xs: 22rem;
+
   /* Palette V2 */
   --color-obsidian: #0d0a08;
   --color-obsidian-soft: #15110d;
@@ -78,12 +81,24 @@ body {
   letter-spacing: -0.01em;
   overflow-x: hidden;
   cursor: none;
+  /* iOS safe area awareness */
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 @media (max-width: 1024px), (pointer: coarse) {
-  body { cursor: auto; }
+  body { cursor: auto; padding-bottom: 0; }
   .cursor-dot, .cursor-ring { display: none !important; }
 }
+
+/* Hide native scroll affordances but allow horizontal scroll containers */
+.hscroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.hscroll::-webkit-scrollbar { display: none; }
+.hscroll > * { scroll-snap-align: start; }
 
 ::selection {
   background: var(--ember);
@@ -111,24 +126,24 @@ body {
 
 .text-display-xl {
   font-family: var(--font-display);
-  font-size: clamp(3.5rem, 11vw, 11rem);
-  line-height: 0.9;
+  font-size: clamp(2.75rem, 11vw, 11rem);
+  line-height: 0.92;
   letter-spacing: -0.04em;
   font-weight: 300;
 }
 
 .text-display-lg {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 7vw, 6rem);
-  line-height: 0.95;
+  font-size: clamp(2rem, 7vw, 6rem);
+  line-height: 0.98;
   letter-spacing: -0.03em;
   font-weight: 300;
 }
 
 .text-display-md {
   font-family: var(--font-display);
-  font-size: clamp(1.75rem, 4vw, 3rem);
-  line-height: 1;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  line-height: 1.05;
   letter-spacing: -0.02em;
   font-weight: 400;
 }
@@ -215,18 +230,24 @@ body {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 2rem;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  min-height: 48px;
   background: var(--ember);
   color: var(--obsidian);
   font-weight: 500;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   border-radius: 999px;
   transition: all 0.4s var(--ease-expo);
   overflow: hidden;
   isolation: isolate;
+  white-space: nowrap;
+}
+@media (min-width: 768px) {
+  .btn-primary { padding: 1rem 2rem; gap: 0.75rem; font-size: 0.875rem; letter-spacing: 0.12em; }
 }
 .btn-primary::before {
   content: "";
@@ -248,16 +269,22 @@ body {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 2rem;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  min-height: 48px;
   border: 1px solid var(--line-strong);
   color: var(--cream);
   font-weight: 400;
-  font-size: 0.875rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   border-radius: 999px;
   transition: all 0.4s var(--ease-expo);
+  white-space: nowrap;
+}
+@media (min-width: 768px) {
+  .btn-ghost { padding: 1rem 2rem; gap: 0.75rem; font-size: 0.875rem; letter-spacing: 0.12em; }
 }
 .btn-ghost:hover {
   background: rgba(244, 234, 216, 0.06);
@@ -388,14 +415,26 @@ body.cursor-hover .cursor-ring {
 }
 
 /* Section spacing rhythm */
-.section { padding: clamp(5rem, 10vh, 9rem) 0; }
-.section-tight { padding: clamp(3rem, 6vh, 5rem) 0; }
+.section { padding: clamp(3.5rem, 9vh, 9rem) 0; }
+.section-tight { padding: clamp(2.5rem, 6vh, 5rem) 0; }
 
 /* Container */
 .container-edge {
   max-width: 1480px;
   margin: 0 auto;
-  padding: 0 clamp(1.5rem, 4vw, 3rem);
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+}
+
+/* Tap target safety */
+@media (pointer: coarse) {
+  a, button { min-height: 44px; }
+  a.inline, button.inline { min-height: 0; }
+}
+
+/* Mobile-only bottom padding for content above floating CTA */
+@media (max-width: 767px) {
+  main { padding-bottom: env(safe-area-inset-bottom); }
+  .has-mobile-cta { padding-bottom: calc(env(safe-area-inset-bottom) + 5rem); }
 }
 
 /* Number ticker (chapter index) */

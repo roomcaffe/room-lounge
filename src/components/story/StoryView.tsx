@@ -68,24 +68,24 @@ function Chapter({ ch, i }: { ch: typeof chapters[0]; i: number }) {
     <motion.div
       ref={ref}
       style={{ opacity }}
-      className="grid lg:grid-cols-12 gap-10 items-start py-24 lg:py-40 border-b border-[color:var(--line)]"
+      className="grid lg:grid-cols-12 gap-6 md:gap-10 items-start py-16 md:py-24 lg:py-40 border-b border-[color:var(--line)]"
     >
       <motion.div
         style={{ y: yearY }}
         className="lg:col-span-5 lg:sticky lg:top-32"
       >
-        <div className="chapter-num mb-4">
+        <div className="chapter-num mb-2 md:mb-4">
           Chapter {String(i + 1).padStart(2, "0")}
         </div>
-        <div className="font-display text-[clamp(5rem,12vw,10rem)] leading-[0.85] text-gradient-ember">
+        <div className="font-display text-[clamp(4rem,16vw,10rem)] leading-[0.85] text-gradient-ember">
           {ch.year}
         </div>
       </motion.div>
 
       <div className="lg:col-span-7">
         <span className="text-eyebrow">{ch.keyword}</span>
-        <h3 className="text-display-md mt-3 mb-6 text-balance">{ch.title}</h3>
-        <p className="text-lg text-[color:var(--cream-soft)]/70 text-pretty leading-relaxed max-w-xl">
+        <h3 className="text-display-md mt-2 md:mt-3 mb-4 md:mb-6 text-balance">{ch.title}</h3>
+        <p className="text-base md:text-lg text-[color:var(--cream-soft)]/70 text-pretty leading-relaxed max-w-xl">
           {ch.body}
         </p>
       </div>
@@ -97,7 +97,7 @@ export function StoryView() {
   return (
     <div className="relative">
       {/* Hero */}
-      <section className="container-edge pt-32 pb-20 relative">
+      <section className="container-edge pt-28 md:pt-32 pb-16 md:pb-20 relative">
         <div className="absolute inset-0 bg-gold-glow opacity-50 pointer-events-none" />
         <div className="relative max-w-4xl">
           <span className="text-eyebrow">Story</span>
@@ -105,21 +105,21 @@ export function StoryView() {
             18 vite.<br />
             Një vend. <em className="text-gradient-ember">Pa lëvizur.</em>
           </h1>
-          <p className="mt-8 text-xl text-[color:var(--cream-soft)]/70 text-pretty max-w-2xl">
+          <p className="mt-6 md:mt-8 text-base md:text-xl text-[color:var(--cream-soft)]/70 text-pretty max-w-2xl">
             Disa e quajnë konsistencë. Ne i themi besnikëri ndaj qytetit që na zgjodhi.
           </p>
         </div>
       </section>
 
       {/* Stats */}
-      <section className="container-edge py-12 border-y border-[color:var(--line)]">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <section className="container-edge py-10 md:py-12 border-y border-[color:var(--line)]">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {stats.map((s) => (
             <div key={s.label} className="text-center md:text-left">
-              <div className="font-display text-5xl md:text-6xl text-gradient-ember leading-none">
+              <div className="font-display text-4xl md:text-6xl text-gradient-ember leading-none">
                 {s.value}
               </div>
-              <div className="text-eyebrow mt-3 !text-[color:var(--cream-soft)]/60">
+              <div className="text-eyebrow mt-2 md:mt-3 !text-[color:var(--cream-soft)]/60">
                 {s.label}
               </div>
             </div>
@@ -136,7 +136,7 @@ export function StoryView() {
 
       {/* CTA */}
       <section className="container-edge section">
-        <div className="glass-strong rounded-3xl p-12 md:p-16 text-center bg-noise">
+        <div className="glass-strong rounded-3xl p-8 md:p-12 lg:p-16 text-center bg-noise">
           <span className="text-eyebrow">Ti je kapitulli i radhës</span>
           <h2 className="text-display-md mt-4 max-w-2xl mx-auto text-balance">
             Sjell historinë <em className="text-gradient-ember">tënde</em> në Room.

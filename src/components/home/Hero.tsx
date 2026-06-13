@@ -16,7 +16,7 @@ export function Hero() {
   useEffect(() => setMounted(true), []);
 
   return (
-    <section className="relative h-[100svh] min-h-[640px] overflow-hidden bg-noise">
+    <section className="relative min-h-[100svh] overflow-hidden bg-noise">
       {/* 3D scene */}
       {mounted && <HeroScene />}
 
@@ -24,13 +24,13 @@ export function Hero() {
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,var(--obsidian)_85%)] z-10 pointer-events-none" />
       <div className="absolute inset-0 bg-gradient-to-b from-[color:var(--obsidian)]/40 via-transparent to-[color:var(--obsidian)] z-10 pointer-events-none" />
 
-      {/* Top live vibe */}
-      <div className="absolute top-24 right-6 md:right-10 z-30">
+      {/* Top live vibe — below nav, full-width on mobile */}
+      <div className="absolute top-[5.5rem] md:top-24 inset-x-4 md:inset-x-auto md:right-10 z-30 flex justify-center md:justify-end">
         <LiveVibe />
       </div>
 
       {/* Hero content */}
-      <div className="relative z-20 container-edge h-full flex flex-col justify-end pb-28 md:pb-32">
+      <div className="relative z-20 container-edge min-h-[100svh] flex flex-col justify-end pt-40 pb-24 md:pb-32">
         <span
           className="text-eyebrow mb-6 opacity-0"
           style={{
@@ -51,7 +51,7 @@ export function Hero() {
         </h1>
 
         <p
-          className="mt-6 max-w-md text-lg text-[color:var(--cream-soft)]/70 text-pretty opacity-0"
+          className="mt-5 md:mt-6 max-w-md text-base md:text-lg text-[color:var(--cream-soft)]/70 text-pretty opacity-0"
           style={{
             animation: "fadeUp 1.2s var(--ease-expo) 0.7s forwards",
           }}
@@ -61,7 +61,7 @@ export function Hero() {
         </p>
 
         <div
-          className="mt-10 flex flex-wrap items-center gap-4 opacity-0"
+          className="mt-8 md:mt-10 flex flex-wrap items-center gap-3 opacity-0"
           style={{
             animation: "fadeUp 1.2s var(--ease-expo) 0.9s forwards",
           }}
@@ -75,9 +75,9 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Scroll indicator — hidden on small screens to avoid CTA overlap */}
       <div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-3 opacity-0"
+        className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex-col items-center gap-3 opacity-0"
         style={{ animation: "fadeIn 1s var(--ease-expo) 1.4s forwards" }}
       >
         <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-[color:var(--cream-soft)]/40">

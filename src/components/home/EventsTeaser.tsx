@@ -38,7 +38,7 @@ export function EventsTeaser({ events }: { events: Event[] }) {
             </p>
           </div>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
             {events.slice(0, 3).map((ev, i) => {
               const d = new Date(ev.date);
               const day = d.getDate();

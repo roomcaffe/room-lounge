@@ -34,29 +34,29 @@ export function Nav() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          scrolled ? "py-3" : "py-5"
+          scrolled ? "py-2.5 md:py-3" : "py-4 md:py-5"
         }`}
         style={{
-          backdropFilter: scrolled ? "blur(20px) saturate(150%)" : "none",
-          WebkitBackdropFilter: scrolled ? "blur(20px) saturate(150%)" : "none",
-          background: scrolled ? "rgba(13,10,8,0.55)" : "transparent",
+          backdropFilter: scrolled ? "blur(20px) saturate(150%)" : "blur(8px)",
+          WebkitBackdropFilter: scrolled ? "blur(20px) saturate(150%)" : "blur(8px)",
+          background: scrolled ? "rgba(13,10,8,0.7)" : "rgba(13,10,8,0.15)",
           borderBottom: scrolled
             ? "1px solid rgba(244,234,216,0.08)"
             : "1px solid transparent",
         }}
       >
-        <div className="container-edge flex items-center justify-between">
+        <div className="container-edge flex items-center justify-between gap-3">
           {/* Logo */}
-          <Link href="/" className="group flex items-center gap-3 magnet">
-            <div className="relative w-9 h-9 rounded-full border border-[color:var(--line-strong)] flex items-center justify-center overflow-hidden">
+          <Link href="/" className="group flex items-center gap-2.5 md:gap-3 magnet">
+            <div className="relative w-9 h-9 rounded-full border border-[color:var(--line-strong)] flex items-center justify-center overflow-hidden shrink-0">
               <span className="font-display text-xl text-[color:var(--ember)] leading-none">
                 R
               </span>
               <span className="absolute inset-0 bg-[color:var(--ember)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-color" />
             </div>
-            <div className="hidden sm:flex flex-col leading-none">
-              <span className="font-display text-lg tracking-tight">Room</span>
-              <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-[color:var(--cream-soft)]/60 mt-0.5">
+            <div className="flex flex-col leading-none">
+              <span className="font-display text-base md:text-lg tracking-tight">Room</span>
+              <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-[color:var(--cream-soft)]/60 mt-0.5 hidden xs:block">
                 Lounge · Lipjan
               </span>
             </div>
@@ -89,16 +89,16 @@ export function Nav() {
           </nav>
 
           {/* CTA */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 md:gap-3">
             <Link
               href="/reserve"
-              className="hidden sm:inline-flex btn-primary !py-2.5 !px-5 !text-xs"
+              className="btn-primary !py-2 !px-4 md:!py-2.5 md:!px-5 !text-[11px] md:!text-xs !min-h-0"
             >
               Rezervo
             </Link>
             <button
               onClick={() => setOpen(true)}
-              className="lg:hidden p-2 text-[color:var(--cream)]"
+              className="lg:hidden p-2 -mr-2 text-[color:var(--cream)]"
               aria-label="Open menu"
             >
               <Menu size={22} />
@@ -134,12 +134,12 @@ export function Nav() {
               <X size={24} />
             </button>
           </div>
-          <nav className="flex flex-col gap-1">
+          <nav className="flex flex-col gap-0">
             {links.map((link, i) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="group flex items-baseline gap-4 py-3 border-b border-[color:var(--line)]"
+                className="group flex items-baseline gap-4 py-2.5 border-b border-[color:var(--line)]"
                 style={{
                   transitionDelay: `${open ? i * 40 : 0}ms`,
                 }}
@@ -147,7 +147,7 @@ export function Nav() {
                 <span className="font-mono text-xs text-[color:var(--ember)]">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="font-display text-4xl group-hover:text-[color:var(--ember)] transition-colors">
+                <span className="font-display text-3xl group-hover:text-[color:var(--ember)] transition-colors">
                   {link.label}
                 </span>
               </Link>

@@ -19,7 +19,7 @@ export function CallToVisit() {
           <div className="absolute inset-0 bg-gradient-to-br from-[color:var(--obsidian-card)] via-[color:var(--obsidian)] to-[color:var(--obsidian-card)]" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,rgba(217,121,66,0.25),transparent_50%)]" />
 
-          <div className="relative p-10 md:p-16 lg:p-20 grid lg:grid-cols-12 gap-10 items-center">
+          <div className="relative p-6 md:p-12 lg:p-20 grid lg:grid-cols-12 gap-6 md:gap-10 items-center">
             <div className="lg:col-span-7">
               <span className="text-eyebrow">Bëje natën të jotën</span>
               <h2 className="text-display-lg mt-4 text-balance leading-[0.95]">
@@ -27,11 +27,11 @@ export function CallToVisit() {
                 <br />
                 Shihemi në Lipjan.
               </h2>
-              <p className="mt-6 text-lg text-[color:var(--cream-soft)]/70 text-pretty max-w-md">
+              <p className="mt-4 md:mt-6 text-base md:text-lg text-[color:var(--cream-soft)]/70 text-pretty max-w-md">
                 Rezervo në më pak se një minutë. Konfirmim me WhatsApp, pa
                 stres, pa pritje.
               </p>
-              <div className="mt-10 flex flex-wrap gap-4">
+              <div className="mt-6 md:mt-10 flex flex-wrap gap-3">
                 <Link href="/reserve" className="btn-primary">
                   Rezervo Tavolinën <ArrowUpRight size={16} />
                 </Link>

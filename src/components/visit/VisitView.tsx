@@ -54,10 +54,10 @@ export function VisitView() {
         </p>
       </header>
 
-      <div className="grid lg:grid-cols-12 gap-6">
+      <div className="grid lg:grid-cols-12 gap-4 md:gap-6">
         {/* Map */}
         <div className="lg:col-span-7">
-          <div className="relative aspect-[4/3] lg:aspect-auto lg:h-full rounded-3xl overflow-hidden border border-[color:var(--line-strong)]">
+          <div className="relative aspect-[5/4] md:aspect-[4/3] lg:aspect-auto lg:h-full lg:min-h-[600px] rounded-3xl overflow-hidden border border-[color:var(--line-strong)]">
             <iframe
               src={embedUrl}
               className="absolute inset-0 w-full h-full grayscale-[0.6] contrast-110"
@@ -66,7 +66,7 @@ export function VisitView() {
               referrerPolicy="no-referrer-when-downgrade"
             />
             {/* Overlay pin */}
-            <div className="absolute top-6 left-6 glass-strong rounded-2xl px-4 py-3 inline-flex items-center gap-3">
+            <div className="absolute top-4 left-4 md:top-6 md:left-6 glass-strong rounded-2xl px-3 md:px-4 py-2 md:py-3 inline-flex items-center gap-2.5 md:gap-3">
               <span className="live-dot" />
               <div className="leading-tight">
                 <div className="text-xs font-mono uppercase tracking-[0.2em]">
@@ -82,7 +82,7 @@ export function VisitView() {
               href={directionsUrl}
               target="_blank"
               rel="noreferrer"
-              className="absolute bottom-6 right-6 btn-primary !text-xs !py-2.5 !px-5"
+              className="absolute bottom-4 right-4 md:bottom-6 md:right-6 btn-primary !text-xs !py-2.5 !px-4 !min-h-0"
             >
               Drejtime <ArrowUpRight size={14} />
             </a>
@@ -187,7 +187,7 @@ export function VisitView() {
           </div>
 
           {/* Social / email */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-3 md:gap-4">
             <a
               href={ig}
               target="_blank"
