@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-display",
+  axes: ["SOFT"],
   display: "swap",
 });
 
@@ -16,38 +16,45 @@ const inter = Inter({
   display: "swap",
 });
 
+const jetbrains = JetBrains_Mono({
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
+  metadataBase: new URL("https://roomcaffe.com"),
   title: {
-    default: "Room Lounge Cafe — Lipjan, Kosovë",
-    template: "%s | Room Lounge Cafe",
+    default: "Room Lounge — Lipjan",
+    template: "%s · Room Lounge",
   },
   description:
-    "Mbi 18 vite në Lipjan. Coffee, cocktails, live music dhe atmosferë premium. Rezervoni tavolinën tuaj online.",
+    "18 vite në Lipjan. Coffee, cocktails, live music. Hyr në lounge para se të vish.",
   keywords: [
-    "Room Lounge Cafe",
+    "Room Lounge",
+    "RoomCaffe",
     "Lipjan",
     "Kosovë",
-    "kafene",
-    "lounge",
+    "lounge bar",
     "live music",
-    "rezervim tavoline",
-    "coffee shop",
+    "rezervim",
+    "coffee",
     "cocktails",
   ],
   openGraph: {
-    title: "Room Lounge Cafe — Lipjan, Kosovë",
+    title: "Room Lounge — Lipjan",
     description:
-      "Mbi 18 vite në Lipjan. Coffee, cocktails, live music dhe atmosferë premium.",
-    url: "https://roomloungecafe.com",
-    siteName: "Room Lounge Cafe",
+      "18 vite në Lipjan. Coffee, cocktails, live music. Hyr në lounge para se të vish.",
+    url: "https://roomcaffe.com",
+    siteName: "Room Lounge",
     locale: "sq_AL",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Room Lounge Cafe — Lipjan, Kosovë",
-    description:
-      "Coffee, cocktails, live music dhe atmosferë premium në zemër të Lipjanit.",
+    title: "Room Lounge — Lipjan",
+    description: "18 vite në Lipjan. Hyr në lounge para se të vish.",
   },
 };
 
@@ -57,7 +64,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="sq" className={`${cormorant.variable} ${inter.variable}`}>
+    <html
+      lang="sq"
+      className={`${fraunces.variable} ${inter.variable} ${jetbrains.variable}`}
+    >
       <body>{children}</body>
     </html>
   );
