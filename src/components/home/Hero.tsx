@@ -54,7 +54,7 @@ export function Hero() {
   const active = HERO_FRAMES[idx];
 
   return (
-    <section className="relative min-h-[100svh] overflow-hidden bg-noise">
+    <section className="relative min-h-[100svh] overflow-hidden">
       {/* Image stack — cross-fading with ken-burns */}
       <div className="absolute inset-0">
         {HERO_FRAMES.map((f, i) => (
@@ -63,25 +63,38 @@ export function Hero() {
             className="absolute inset-0 transition-opacity duration-[1800ms] ease-in-out"
             style={{ opacity: i === idx ? 1 : 0 }}
           >
-            <div className="absolute inset-0 animate-ken-burns">
+            <div
+              className="absolute inset-0 animate-ken-burns"
+              style={{ filter: "saturate(1.08) contrast(1.05)" }}
+            >
               <Image
                 src={f.src}
                 alt={f.caption}
                 fill
                 priority={i === 0}
                 sizes="100vw"
-                quality={88}
+                quality={95}
                 style={{ objectFit: "cover", objectPosition: f.focal }}
               />
             </div>
           </div>
         ))}
       </div>
+      {/* Soft film grain (lighter than global bg-noise) */}
+      <div
+        className="absolute inset-0 z-[5] pointer-events-none opacity-20 mix-blend-overlay"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 0.9 0 0 0 0 0.85 0 0 0 0.12 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+        }}
+      />
 
-      {/* Tonal grading veils */}
-      <div className="absolute inset-0 z-10 pointer-events-none bg-[linear-gradient(180deg,rgba(10,7,5,0.55)_0%,rgba(10,7,5,0.15)_35%,rgba(10,7,5,0.55)_75%,var(--obsidian)_100%)]" />
-      <div className="absolute inset-0 z-10 pointer-events-none bg-[radial-gradient(ellipse_at_70%_30%,rgba(198,155,84,0.22)_0%,transparent_55%)]" />
-      <div className="absolute inset-0 z-10 pointer-events-none bg-[radial-gradient(ellipse_at_15%_85%,rgba(107,31,36,0.32)_0%,transparent_50%)]" />
+      {/* Tonal grading veils — lighter for clearer photography */}
+      <div className="absolute inset-0 z-10 pointer-events-none bg-[linear-gradient(180deg,rgba(10,7,5,0.35)_0%,rgba(10,7,5,0.05)_40%,rgba(10,7,5,0.40)_78%,var(--obsidian)_100%)]" />
+      <div className="absolute inset-0 z-10 pointer-events-none bg-[radial-gradient(ellipse_at_70%_30%,rgba(198,155,84,0.12)_0%,transparent_55%)]" />
+      <div className="absolute inset-0 z-10 pointer-events-none bg-[radial-gradient(ellipse_at_15%_85%,rgba(107,31,36,0.18)_0%,transparent_50%)]" />
+      {/* Soft scrim only under the text block (left side, bottom) so copy stays readable on bright frames */}
+      <div className="absolute inset-0 z-10 pointer-events-none bg-[linear-gradient(90deg,rgba(10,7,5,0.55)_0%,rgba(10,7,5,0.15)_55%,transparent_85%)]" />
 
       {/* Subtle brass grille at the very top */}
       <div className="absolute top-0 left-0 right-0 h-1 z-20 brass-divider opacity-80" />
