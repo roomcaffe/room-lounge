@@ -84,10 +84,10 @@ export function LiveVibe() {
 
   const dotColor =
     vibe.status === "open"
-      ? "var(--ember)"
+      ? "var(--brass)"
       : vibe.status === "closing-soon"
-        ? "var(--gold)"
-        : "rgba(244,234,216,0.3)";
+        ? "var(--ember)"
+        : "rgba(240,228,207,0.3)";
 
   return (
     <div className="glass rounded-full md:rounded-2xl px-3 py-2 md:px-4 md:py-3 inline-flex items-center gap-2.5 md:gap-3 max-w-full">

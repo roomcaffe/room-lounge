@@ -1,30 +1,92 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
 import { LiveVibe } from "./LiveVibe";
 
-const HeroScene = dynamic(
-  () => import("./HeroScene").then((m) => m.HeroScene),
-  { ssr: false }
-);
+/**
+ * Hero V3 — "Deco Speakeasy"
+ * Cinematic full-bleed render carousel with parallax, ken-burns motion,
+ * and brass deco framing. Photography drives the mood.
+ */
+
+const HERO_FRAMES = [
+  {
+    src: "/renders/render-3.jpg",
+    eyebrow: "The Main Hall",
+    caption: "Brass arches · Crystal chandeliers · Marble bar",
+    focal: "50% 50%",
+  },
+  {
+    src: "/renders/render-5.jpg",
+    eyebrow: "The Glow",
+    caption: "Amber glassblock · Velvet banquettes · Live nights",
+    focal: "55% 45%",
+  },
+  {
+    src: "/renders/render-1.jpg",
+    eyebrow: "The Lounge",
+    caption: "Cocktail tables under cascading light",
+    focal: "50% 55%",
+  },
+  {
+    src: "/renders/render-4.jpg",
+    eyebrow: "The Bar",
+    caption: "Backlit columns · Tufted oxblood · Pour & repeat",
+    focal: "50% 50%",
+  },
+];
 
 export function Hero() {
+  const [idx, setIdx] = useState(0);
   const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
+
+  useEffect(() => {
+    setMounted(true);
+    const t = setInterval(() => {
+      setIdx((i) => (i + 1) % HERO_FRAMES.length);
+    }, 7000);
+    return () => clearInterval(t);
+  }, []);
+
+  const active = HERO_FRAMES[idx];
 
   return (
     <section className="relative min-h-[100svh] overflow-hidden bg-noise">
-      {/* 3D scene */}
-      {mounted && <HeroScene />}
+      {/* Image stack — cross-fading with ken-burns */}
+      <div className="absolute inset-0">
+        {HERO_FRAMES.map((f, i) => (
+          <div
+            key={f.src}
+            className="absolute inset-0 transition-opacity duration-[1800ms] ease-in-out"
+            style={{ opacity: i === idx ? 1 : 0 }}
+          >
+            <div className="absolute inset-0 animate-ken-burns">
+              <Image
+                src={f.src}
+                alt={f.caption}
+                fill
+                priority={i === 0}
+                sizes="100vw"
+                quality={88}
+                style={{ objectFit: "cover", objectPosition: f.focal }}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
 
-      {/* Gradient veil */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,var(--obsidian)_85%)] z-10 pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[color:var(--obsidian)]/40 via-transparent to-[color:var(--obsidian)] z-10 pointer-events-none" />
+      {/* Tonal grading veils */}
+      <div className="absolute inset-0 z-10 pointer-events-none bg-[linear-gradient(180deg,rgba(10,7,5,0.55)_0%,rgba(10,7,5,0.15)_35%,rgba(10,7,5,0.55)_75%,var(--obsidian)_100%)]" />
+      <div className="absolute inset-0 z-10 pointer-events-none bg-[radial-gradient(ellipse_at_70%_30%,rgba(198,155,84,0.22)_0%,transparent_55%)]" />
+      <div className="absolute inset-0 z-10 pointer-events-none bg-[radial-gradient(ellipse_at_15%_85%,rgba(107,31,36,0.32)_0%,transparent_50%)]" />
 
-      {/* Top live vibe — below nav, full-width on mobile */}
+      {/* Subtle brass grille at the very top */}
+      <div className="absolute top-0 left-0 right-0 h-1 z-20 brass-divider opacity-80" />
+
+      {/* Top live vibe */}
       <div className="absolute top-[5rem] md:top-24 inset-x-4 md:inset-x-auto md:right-10 z-30 flex justify-center md:justify-end pointer-events-none">
         <div className="pointer-events-auto max-w-full">
           <LiveVibe />
@@ -35,49 +97,74 @@ export function Hero() {
       <div className="relative z-20 container-edge min-h-[100svh] flex flex-col justify-end pt-44 md:pt-40 pb-28 md:pb-32">
         <span
           className="text-eyebrow mb-6 opacity-0"
-          style={{
-            animation: "fadeUp 1s var(--ease-expo) 0.2s forwards",
-          }}
+          style={{ animation: "fadeUp 1s var(--ease-expo) 0.2s forwards" }}
         >
           Lipjan · Est. 2007 · 18 vite
         </span>
 
         <h1
           className="text-display-xl text-balance opacity-0"
-          style={{
-            animation: "fadeUp 1.2s var(--ease-expo) 0.4s forwards",
-          }}
+          style={{ animation: "fadeUp 1.2s var(--ease-expo) 0.4s forwards" }}
         >
-          Më shumë se<br />
-          një <em className="font-display italic text-gradient-ember">kafene</em>.
+          Hyr në një{" "}
+          <em className="font-display italic brass-shimmer">orë</em><br />
+          që nuk e harron.
         </h1>
 
         <p
-          className="mt-5 md:mt-6 max-w-md text-base md:text-lg text-[color:var(--cream-soft)]/70 text-pretty opacity-0"
-          style={{
-            animation: "fadeUp 1.2s var(--ease-expo) 0.7s forwards",
-          }}
+          className="mt-5 md:mt-6 max-w-md text-base md:text-lg text-[color:var(--cream-soft)]/80 text-pretty opacity-0"
+          style={{ animation: "fadeUp 1.2s var(--ease-expo) 0.7s forwards" }}
         >
-          Pikë takimi për gjenerata. Coffee, cocktails, live music dhe netë që
-          nuk harrohen — në zemër të Lipjanit.
+          Speakeasy lounge në zemër të Lipjanit. Brass, mermer, kadife —
+          dhe netë që janë treguar 18 vite me radhë.
         </p>
 
         <div
           className="mt-8 md:mt-10 flex flex-wrap items-center gap-3 opacity-0"
-          style={{
-            animation: "fadeUp 1.2s var(--ease-expo) 0.9s forwards",
-          }}
+          style={{ animation: "fadeUp 1.2s var(--ease-expo) 0.9s forwards" }}
         >
           <Link href="/reserve" className="btn-primary">
             Rezervo Tavolinën <ArrowUpRight size={16} />
           </Link>
-          <Link href="/story" className="btn-ghost">
-            Historia jonë
+          <Link href="/gallery" className="btn-ghost">
+            Shiko hapësirën
           </Link>
+        </div>
+
+        {/* Bottom slide indicator + caption */}
+        <div className="mt-12 hidden md:flex items-end justify-between gap-6">
+          <div
+            key={active.src}
+            className="opacity-0"
+            style={{ animation: "fadeUp 0.8s var(--ease-expo) 0.1s forwards" }}
+          >
+            <div className="text-eyebrow opacity-80">{active.eyebrow}</div>
+            <div className="mt-1 text-sm text-[color:var(--cream-soft)]/65">
+              {active.caption}
+            </div>
+          </div>
+
+          <div className="flex items-center gap-3">
+            {HERO_FRAMES.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setIdx(i)}
+                aria-label={`Frame ${i + 1}`}
+                className="group relative h-[3px] w-10 overflow-hidden rounded-full bg-[color:var(--line-strong)]"
+              >
+                <span
+                  className="absolute inset-0 origin-left bg-[color:var(--brass)] transition-transform duration-500"
+                  style={{
+                    transform: `scaleX(${i === idx ? 1 : 0})`,
+                  }}
+                />
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Scroll indicator — hidden on small screens to avoid CTA overlap */}
+      {/* Scroll indicator */}
       <div
         className="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex-col items-center gap-3 opacity-0"
         style={{ animation: "fadeIn 1s var(--ease-expo) 1.4s forwards" }}
@@ -85,26 +172,15 @@ export function Hero() {
         <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-[color:var(--cream-soft)]/40">
           Scroll
         </span>
-        <ArrowDown
-          size={14}
-          className="text-[color:var(--ember)] animate-pulse-soft"
-        />
+        <ArrowDown size={14} className="text-[color:var(--brass)] animate-pulse-soft" />
       </div>
 
       <style jsx>{`
         @keyframes fadeUp {
-          from {
-            opacity: 0;
-            transform: translateY(28px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
+          from { opacity: 0; transform: translateY(28px); }
+          to   { opacity: 1; transform: translateY(0); }
         }
-        @keyframes fadeIn {
-          to { opacity: 1; }
-        }
+        @keyframes fadeIn { to { opacity: 1; } }
       `}</style>
     </section>
   );

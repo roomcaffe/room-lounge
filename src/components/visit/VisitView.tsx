@@ -47,7 +47,7 @@ export function VisitView() {
       <header className="mb-16 max-w-3xl">
         <span className="text-eyebrow">Visit</span>
         <h1 className="text-display-lg mt-3 text-balance">
-          Shihemi në <em className="text-gradient-ember">Lipjan</em>.
+          Shihemi në <em className="font-display italic brass-shimmer">Lipjan</em>.
         </h1>
         <p className="mt-4 text-lg text-[color:var(--cream-soft)]/70 text-pretty">
           Në qendër të qytetit. 5 minuta nga sheshi kryesor. Parkim përreth.
@@ -94,8 +94,8 @@ export function VisitView() {
           {/* Address */}
           <div className="glass rounded-3xl p-6">
             <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-full bg-[color:var(--ember)]/15 flex items-center justify-center shrink-0">
-                <MapPin size={18} className="text-[color:var(--ember)]" />
+              <div className="w-10 h-10 rounded-full bg-[color:var(--brass)]/15 flex items-center justify-center shrink-0">
+                <MapPin size={18} className="text-[color:var(--brass)]" />
               </div>
               <div>
                 <div className="text-eyebrow">Adresa</div>
@@ -106,7 +106,7 @@ export function VisitView() {
                   href={mapsUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="mt-3 inline-flex items-center gap-1.5 text-sm text-[color:var(--ember)] hover:gap-2 transition-all"
+                  className="mt-3 inline-flex items-center gap-1.5 text-sm text-[color:var(--brass)] hover:gap-2 transition-all"
                 >
                   Hap në Google Maps <ArrowUpRight size={12} />
                 </a>
@@ -117,21 +117,21 @@ export function VisitView() {
           {/* Phone */}
           <div className="glass rounded-3xl p-6">
             <div className="flex items-start gap-4">
-              <div className="w-10 h-10 rounded-full bg-[color:var(--ember)]/15 flex items-center justify-center shrink-0">
-                <Phone size={18} className="text-[color:var(--ember)]" />
+              <div className="w-10 h-10 rounded-full bg-[color:var(--brass)]/15 flex items-center justify-center shrink-0">
+                <Phone size={18} className="text-[color:var(--brass)]" />
               </div>
               <div className="flex-1">
                 <div className="text-eyebrow">Telefoni</div>
                 <a
                   href={`tel:${phone}`}
-                  className="font-display text-2xl mt-1 block leading-tight hover:text-[color:var(--ember)] transition-colors"
+                  className="font-display text-2xl mt-1 block leading-tight hover:text-[color:var(--brass)] transition-colors"
                 >
                   {phone}
                 </a>
                 <div className="mt-3 flex gap-2">
                   <a
                     href={`tel:${phone}`}
-                    className="text-xs font-mono uppercase tracking-wider px-3 py-1.5 rounded-full border border-[color:var(--line-strong)] hover:border-[color:var(--ember)] transition-colors"
+                    className="text-xs font-mono uppercase tracking-wider px-3 py-1.5 rounded-full border border-[color:var(--line-strong)] hover:border-[color:var(--brass)] transition-colors"
                   >
                     Telefono
                   </a>
@@ -139,7 +139,7 @@ export function VisitView() {
                     href={`https://wa.me/${wa}`}
                     target="_blank"
                     rel="noreferrer"
-                    className="text-xs font-mono uppercase tracking-wider px-3 py-1.5 rounded-full border border-[color:var(--line-strong)] hover:border-[color:var(--ember)] transition-colors"
+                    className="text-xs font-mono uppercase tracking-wider px-3 py-1.5 rounded-full border border-[color:var(--line-strong)] hover:border-[color:var(--brass)] transition-colors"
                   >
                     WhatsApp
                   </a>
@@ -151,8 +151,8 @@ export function VisitView() {
           {/* Hours */}
           <div className="glass rounded-3xl p-6">
             <div className="flex items-start gap-4 mb-4">
-              <div className="w-10 h-10 rounded-full bg-[color:var(--ember)]/15 flex items-center justify-center shrink-0">
-                <Clock size={18} className="text-[color:var(--ember)]" />
+              <div className="w-10 h-10 rounded-full bg-[color:var(--brass)]/15 flex items-center justify-center shrink-0">
+                <Clock size={18} className="text-[color:var(--brass)]" />
               </div>
               <div>
                 <div className="text-eyebrow">Orari</div>
@@ -167,7 +167,7 @@ export function VisitView() {
                   key={h.day}
                   className={`flex items-center justify-between text-sm py-1.5 transition-colors ${
                     today === i
-                      ? "text-[color:var(--ember)]"
+                      ? "text-[color:var(--brass)]"
                       : "text-[color:var(--cream-soft)]/70"
                   }`}
                 >
@@ -194,7 +194,7 @@ export function VisitView() {
               rel="noreferrer"
               className="glass rounded-3xl p-5 hover:bg-[color:var(--cream)]/5 transition-colors"
             >
-              <span className="text-[color:var(--ember)] inline-flex"><InstagramIcon size={20} /></span>
+              <span className="text-[color:var(--brass)] inline-flex"><InstagramIcon size={20} /></span>
               <div className="text-eyebrow mt-3">Instagram</div>
               <div className="text-sm mt-1">@roomcaffe</div>
             </a>
@@ -202,7 +202,7 @@ export function VisitView() {
               href="mailto:info@roomcaffe.com"
               className="glass rounded-3xl p-5 hover:bg-[color:var(--cream)]/5 transition-colors"
             >
-              <Mail className="text-[color:var(--ember)]" size={20} />
+              <Mail className="text-[color:var(--brass)]" size={20} />
               <div className="text-eyebrow mt-3">Email</div>
               <div className="text-sm mt-1 break-all">info@roomcaffe.com</div>
             </a>

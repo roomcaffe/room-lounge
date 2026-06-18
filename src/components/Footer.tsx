@@ -32,7 +32,7 @@ const navColumns = [
 export function Footer() {
   return (
     <footer className="relative mt-32 border-t border-[color:var(--line)] bg-[color:var(--obsidian-soft)] overflow-hidden">
-      <div className="absolute inset-0 bg-ember-glow pointer-events-none opacity-60" />
+      <div className="absolute inset-0 bg-brass-glow pointer-events-none opacity-60" />
 
       <div className="container-edge relative">
         {/* Big wordmark */}
@@ -93,11 +93,11 @@ export function Footer() {
             <h4 className="text-eyebrow mb-5">Kontakti</h4>
             <ul className="space-y-3 text-sm text-[color:var(--cream-soft)]/80">
               <li className="flex items-start gap-3">
-                <MapPin size={14} className="text-[color:var(--ember)] mt-1 shrink-0" />
+                <MapPin size={14} className="text-[color:var(--brass)] mt-1 shrink-0" />
                 <span>Lipjan, Kosovë</span>
               </li>
               <li className="flex items-start gap-3">
-                <Phone size={14} className="text-[color:var(--ember)] mt-1 shrink-0" />
+                <Phone size={14} className="text-[color:var(--brass)] mt-1 shrink-0" />
                 <a
                   href={`tel:${process.env.NEXT_PUBLIC_BUSINESS_PHONE || ""}`}
                   className="hover:text-[color:var(--cream)] transition-colors"
@@ -106,7 +106,7 @@ export function Footer() {
                 </a>
               </li>
               <li className="flex items-start gap-3">
-                <Mail size={14} className="text-[color:var(--ember)] mt-1 shrink-0" />
+                <Mail size={14} className="text-[color:var(--brass)] mt-1 shrink-0" />
                 <a
                   href="mailto:info@roomcaffe.com"
                   className="hover:text-[color:var(--cream)] transition-colors"
@@ -124,7 +124,7 @@ export function Footer() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={label}
-                  className="w-10 h-10 rounded-full border border-[color:var(--line-strong)] flex items-center justify-center text-[color:var(--cream-soft)] hover:bg-[color:var(--ember)] hover:text-[color:var(--obsidian)] hover:border-[color:var(--ember)] transition-all duration-500"
+                  className="w-10 h-10 rounded-full border border-[color:var(--line-strong)] flex items-center justify-center text-[color:var(--cream-soft)] hover:bg-[color:var(--brass)] hover:text-[color:var(--obsidian)] hover:border-[color:var(--brass)] transition-all duration-500"
                 >
                   <Icon size={14} />
                 </a>

@@ -1,6 +1,7 @@
 import { prisma } from "@/lib/prisma";
 import { Hero } from "@/components/home/Hero";
 import { Marquee } from "@/components/home/Marquee";
+import { TheSpace } from "@/components/home/TheSpace";
 import { Chapters } from "@/components/home/Chapters";
 import { Drinks } from "@/components/home/Drinks";
 import { EventsTeaser } from "@/components/home/EventsTeaser";
@@ -35,6 +36,7 @@ export default async function HomePage() {
     <>
       <Hero />
       <Marquee />
+      <TheSpace />
       <Chapters />
       <Drinks />
       <EventsTeaser

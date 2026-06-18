@@ -191,7 +191,7 @@ export function FloorPlan({ selected, onSelect, guests, occupied = [] }: Props) 
       {/* Legend (bottom-left overlay) */}
       <div className="absolute bottom-3 left-3 glass rounded-2xl px-3 py-2 flex flex-wrap gap-x-4 gap-y-1 text-[10px] font-mono uppercase tracking-wider">
         <span className="flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-[color:var(--ember)]" />
+          <span className="w-2 h-2 rounded-full bg-[color:var(--brass)]" />
           E zgjedhur
         </span>
         <span className="flex items-center gap-1.5">

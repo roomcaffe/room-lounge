@@ -77,7 +77,7 @@ function Chapter({ ch, i }: { ch: typeof chapters[0]; i: number }) {
         <div className="chapter-num mb-2 md:mb-4">
           Chapter {String(i + 1).padStart(2, "0")}
         </div>
-        <div className="font-display text-[clamp(4rem,16vw,10rem)] leading-[0.85] text-gradient-ember">
+        <div className="font-display text-[clamp(4rem,16vw,10rem)] leading-[0.85] font-display italic brass-shimmer">
           {ch.year}
         </div>
       </motion.div>
@@ -103,7 +103,7 @@ export function StoryView() {
           <span className="text-eyebrow">Story</span>
           <h1 className="text-display-xl mt-4 text-balance leading-[0.9]">
             18 vite.<br />
-            Një vend. <em className="text-gradient-ember">Pa lëvizur.</em>
+            Një vend. <em className="font-display italic brass-shimmer">Pa lëvizur.</em>
           </h1>
           <p className="mt-6 md:mt-8 text-base md:text-xl text-[color:var(--cream-soft)]/70 text-pretty max-w-2xl">
             Disa e quajnë konsistencë. Ne i themi besnikëri ndaj qytetit që na zgjodhi.
@@ -116,7 +116,7 @@ export function StoryView() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {stats.map((s) => (
             <div key={s.label} className="text-center md:text-left">
-              <div className="font-display text-4xl md:text-6xl text-gradient-ember leading-none">
+              <div className="font-display text-4xl md:text-6xl font-display italic brass-shimmer leading-none">
                 {s.value}
               </div>
               <div className="text-eyebrow mt-2 md:mt-3 !text-[color:var(--cream-soft)]/60">
@@ -139,7 +139,7 @@ export function StoryView() {
         <div className="glass-strong rounded-3xl p-8 md:p-12 lg:p-16 text-center bg-noise">
           <span className="text-eyebrow">Ti je kapitulli i radhës</span>
           <h2 className="text-display-md mt-4 max-w-2xl mx-auto text-balance">
-            Sjell historinë <em className="text-gradient-ember">tënde</em> në Room.
+            Sjell historinë <em className="font-display italic brass-shimmer">tënde</em> në Room.
           </h2>
           <Link href="/reserve" className="btn-primary mt-8 inline-flex">
             Rezervo Tavolinën <ArrowUpRight size={16} />

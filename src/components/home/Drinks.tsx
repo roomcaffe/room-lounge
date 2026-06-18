@@ -9,25 +9,25 @@ const drinks = [
     name: "Espresso",
     desc: "Italiane klasike. Kremoz, intens, pa kompromis.",
     price: "1.50",
-    accent: "from-[#3a2419] to-[#1c1814]",
+    accent: "from-[#3a2419] to-[#14100b]",
   },
   {
-    name: "Aperol Spritz",
-    desc: "Aperol, prosecco, soda. Verandë + perëndim diellor.",
-    price: "4.50",
-    accent: "from-[#d97942] to-[#a85a2e]",
-  },
-  {
-    name: "Macchiato",
-    desc: "Espresso e veshur me qumësht të shkumëzuar mëndafshi.",
-    price: "1.80",
-    accent: "from-[#8f7344] to-[#3a2419]",
+    name: "Negroni",
+    desc: "Gin, Campari, vermouth. Klasiku që dridh shandelierin.",
+    price: "5.50",
+    accent: "from-[#8a2d33] to-[#3a141a]",
   },
   {
     name: "Old Fashioned",
-    desc: "Whiskey, sheqer, bitter. Klasiku që s'plaket kurrë.",
+    desc: "Whiskey, sheqer i ndezur, bitter. Pa kompromis.",
     price: "6.00",
-    accent: "from-[#a85a2e] to-[#1c1814]",
+    accent: "from-[#8b6a32] to-[#2b2118]",
+  },
+  {
+    name: "Aperol Spritz",
+    desc: "Aperol, prosecco, soda — me zë përté mbrëmjes verore.",
+    price: "4.50",
+    accent: "from-[#d4844a] to-[#a85a2e]",
   },
 ];
 
@@ -39,7 +39,7 @@ export function Drinks() {
           <div className="max-w-xl">
             <span className="text-eyebrow">Menu Highlights</span>
             <h2 className="text-display-lg mt-3 text-balance">
-              Pijet që na bënë <em className="text-gradient-ember">Room</em>.
+              Pijet që na bënë <em className="font-display italic brass-shimmer">Room</em>.
             </h2>
           </div>
           <Link href="/menu" className="btn-ghost">
@@ -63,7 +63,7 @@ export function Drinks() {
               <div className="absolute inset-0 bg-noise opacity-40" />
 
               {/* Glow on hover */}
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(217,121,66,0.4),transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(198,155,84,0.45),transparent_60%)] opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
               {/* Content */}
               <div className="absolute inset-0 p-4 md:p-6 flex flex-col justify-between">

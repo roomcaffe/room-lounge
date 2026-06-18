@@ -45,7 +45,7 @@ export function MenuView({ items }: { items: Item[] }) {
       <header className="mb-16 max-w-3xl">
         <span className="text-eyebrow">Menu</span>
         <h1 className="text-display-lg mt-3 text-balance">
-          Çfarë <em className="text-gradient-ember">do të pijmë</em> sonte?
+          Çfarë <em className="font-display italic brass-shimmer">do të pijmë</em> sonte?
         </h1>
         <p className="mt-4 text-lg text-[color:var(--cream-soft)]/70 text-pretty">
           Coffee italian, cocktails me kujdes, lëngje fresh. Çdo gotë ka një histori.
@@ -61,7 +61,7 @@ export function MenuView({ items }: { items: Item[] }) {
               onClick={() => setActive(cat)}
               className={`shrink-0 px-4 md:px-5 py-2.5 rounded-full text-xs md:text-sm font-medium uppercase tracking-wider transition-all duration-500 ${
                 active === cat
-                  ? "bg-[color:var(--ember)] text-[color:var(--obsidian)]"
+                  ? "bg-[color:var(--brass)] text-[color:var(--obsidian)]"
                   : "glass hover:bg-[color:var(--cream)]/8"
               }`}
             >
@@ -108,14 +108,14 @@ export function MenuView({ items }: { items: Item[] }) {
                   delay: i * 0.04,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="group relative py-5 border-b border-[color:var(--line)] hover:border-[color:var(--ember)] transition-colors"
+                className="group relative py-5 border-b border-[color:var(--line)] hover:border-[color:var(--brass)] transition-colors"
               >
                 <div className="flex items-baseline gap-3 md:gap-4">
                   <h3 className="font-display text-xl md:text-2xl flex-1 min-w-0 group-hover:text-[color:var(--cream)] transition-colors">
                     {item.name}
                   </h3>
                   <span className="hidden md:block flex-1 border-b border-dotted border-[color:var(--line-strong)] mb-1.5" />
-                  <span className="font-mono text-base md:text-lg text-[color:var(--ember)] tabular-nums shrink-0">
+                  <span className="font-mono text-base md:text-lg text-[color:var(--brass)] tabular-nums shrink-0">
                     €{item.price.toFixed(2)}
                   </span>
                 </div>

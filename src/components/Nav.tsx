@@ -52,7 +52,7 @@ export function Nav() {
         style={{
           backdropFilter: scrolled ? "blur(20px) saturate(150%)" : "blur(8px)",
           WebkitBackdropFilter: scrolled ? "blur(20px) saturate(150%)" : "blur(8px)",
-          background: scrolled ? "rgba(13,10,8,0.7)" : "rgba(13,10,8,0.15)",
+          background: scrolled ? "rgba(10,7,5,0.75)" : "rgba(10,7,5,0.18)",
           borderBottom: scrolled
             ? "1px solid rgba(244,234,216,0.08)"
             : "1px solid transparent",
@@ -61,11 +61,11 @@ export function Nav() {
         <div className="container-edge flex items-center justify-between gap-3">
           {/* Logo */}
           <Link href="/" className="group flex items-center gap-2.5 md:gap-3 magnet">
-            <div className="relative w-9 h-9 rounded-full border border-[color:var(--line-strong)] flex items-center justify-center overflow-hidden shrink-0">
-              <span className="font-display text-xl text-[color:var(--ember)] leading-none">
+            <div className="relative w-9 h-9 rounded-full border border-[color:var(--brass)]/40 bg-[radial-gradient(circle_at_30%_30%,rgba(212,174,107,0.28),rgba(28,22,18,0.6))] flex items-center justify-center overflow-hidden shrink-0">
+              <span className="font-display italic text-lg leading-none brass-shimmer" style={{ fontWeight: 500 }}>
                 R
               </span>
-              <span className="absolute inset-0 bg-[color:var(--ember)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 mix-blend-color" />
+              <span className="absolute inset-0 ring-1 ring-inset ring-[color:var(--brass)]/40 rounded-full pointer-events-none" />
             </div>
             <div className="flex flex-col leading-none">
               <span className="font-display text-base md:text-lg tracking-tight">Room</span>
@@ -94,7 +94,7 @@ export function Nav() {
                 >
                   {link.label}
                   {isActive && (
-                    <span className="absolute left-1/2 -bottom-0.5 w-1 h-1 rounded-full bg-[color:var(--ember)] -translate-x-1/2" />
+                    <span className="absolute left-1/2 -bottom-0.5 w-1 h-1 rounded-full bg-[color:var(--brass)] -translate-x-1/2" />
                   )}
                 </Link>
               );
@@ -162,10 +162,10 @@ export function Nav() {
                   transitionDelay: `${open ? i * 40 : 0}ms`,
                 }}
               >
-                <span className="font-mono text-xs text-[color:var(--ember)]">
+                <span className="font-mono text-xs text-[color:var(--brass)]">
                   {String(i + 1).padStart(2, "0")}
                 </span>
-                <span className="font-display text-3xl group-hover:text-[color:var(--ember)] transition-colors">
+                <span className="font-display text-3xl group-hover:text-[color:var(--brass)] transition-colors">
                   {link.label}
                 </span>
               </Link>

@@ -63,7 +63,7 @@ function Chapter({ chapter, index }: { chapter: typeof chapters[0]; index: numbe
           {chapter.text}
         </p>
         <div className="mt-4 md:mt-6 inline-flex items-center gap-2 text-eyebrow">
-          <span className="w-6 h-px bg-[color:var(--ember)]" />
+          <span className="w-6 h-px bg-[color:var(--brass)]" />
           {chapter.keyword}
         </div>
       </div>
@@ -74,13 +74,13 @@ function Chapter({ chapter, index }: { chapter: typeof chapters[0]; index: numbe
 export function Chapters() {
   return (
     <section className="relative section overflow-hidden">
-      <div className="absolute inset-0 bg-gold-glow pointer-events-none opacity-50" />
+      <div className="absolute inset-0 bg-brass-glow pointer-events-none opacity-40" />
       <div className="container-edge relative">
         <div className="max-w-2xl mb-12 md:mb-20">
           <span className="text-eyebrow">Story</span>
           <h2 className="text-display-lg mt-2 md:mt-3 text-balance">
             Një kafene. Katër epoka.
-            <span className="text-gradient-ember"> Një bashkësi.</span>
+            <span className="brass-shimmer"> Një bashkësi.</span>
           </h2>
         </div>
 

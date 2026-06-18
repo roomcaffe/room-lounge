@@ -93,8 +93,8 @@ export function ReserveForm() {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className="glass-strong rounded-3xl p-10 text-center"
       >
-        <div className="w-16 h-16 rounded-full bg-[color:var(--ember)]/15 border border-[color:var(--ember)] flex items-center justify-center mx-auto mb-6">
-          <Check size={28} className="text-[color:var(--ember)]" />
+        <div className="w-16 h-16 rounded-full bg-[color:var(--brass)]/15 border border-[color:var(--brass)] flex items-center justify-center mx-auto mb-6">
+          <Check size={28} className="text-[color:var(--brass)]" />
         </div>
         <h3 className="text-display-md mb-3">Rezervimi u dërgua.</h3>
         <p className="text-[color:var(--cream-soft)]/70 max-w-md mx-auto text-pretty">
@@ -123,9 +123,9 @@ export function ReserveForm() {
               <span
                 className={`w-8 h-8 shrink-0 rounded-full border flex items-center justify-center font-mono text-[10px] md:text-xs transition-all ${
                   i === step
-                    ? "bg-[color:var(--ember)] border-[color:var(--ember)] text-[color:var(--obsidian)]"
+                    ? "bg-[color:var(--brass)] border-[color:var(--brass)] text-[color:var(--obsidian)]"
                     : i < step
-                      ? "border-[color:var(--ember)] text-[color:var(--ember)]"
+                      ? "border-[color:var(--brass)] text-[color:var(--brass)]"
                       : "border-[color:var(--line-strong)] text-[color:var(--cream-soft)]/40"
                 }`}
               >
@@ -156,7 +156,7 @@ export function ReserveForm() {
             <div className="space-y-8">
               <div>
                 <h3 className="text-display-md mb-1 flex items-center gap-3">
-                  <Calendar className="text-[color:var(--ember)]" size={28} />
+                  <Calendar className="text-[color:var(--brass)]" size={28} />
                   Zgjedh datën
                 </h3>
                 <p className="text-sm text-[color:var(--cream-soft)]/60">14 ditët e ardhshme</p>
@@ -171,7 +171,7 @@ export function ReserveForm() {
                       onClick={() => setDate(d)}
                       className={`shrink-0 w-16 md:w-auto rounded-2xl p-3 text-center transition-all duration-300 ${
                         isSelected
-                          ? "bg-[color:var(--ember)] text-[color:var(--obsidian)]"
+                          ? "bg-[color:var(--brass)] text-[color:var(--obsidian)]"
                           : "glass hover:bg-[color:var(--cream)]/8"
                       }`}
                     >
@@ -195,7 +195,7 @@ export function ReserveForm() {
                   animate={{ opacity: 1, y: 0 }}
                 >
                   <h3 className="text-display-md mb-4 flex items-center gap-3">
-                    <Clock className="text-[color:var(--ember)]" size={26} />
+                    <Clock className="text-[color:var(--brass)]" size={26} />
                     Ora
                   </h3>
                   <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-2">
@@ -205,7 +205,7 @@ export function ReserveForm() {
                         onClick={() => setTime(t)}
                         className={`rounded-full py-3 text-sm font-mono transition-all duration-300 ${
                           time === t
-                            ? "bg-[color:var(--ember)] text-[color:var(--obsidian)]"
+                            ? "bg-[color:var(--brass)] text-[color:var(--obsidian)]"
                             : "glass hover:bg-[color:var(--cream)]/8"
                         }`}
                       >
@@ -222,7 +222,7 @@ export function ReserveForm() {
             <div className="flex flex-col items-center justify-center min-h-[400px] gap-10">
               <div className="text-center">
                 <h3 className="text-display-md mb-1 flex items-center gap-3 justify-center">
-                  <Users className="text-[color:var(--ember)]" size={28} />
+                  <Users className="text-[color:var(--brass)]" size={28} />
                   Sa persona?
                 </h3>
                 <p className="text-sm text-[color:var(--cream-soft)]/60">Përfshirë ty</p>
@@ -235,7 +235,7 @@ export function ReserveForm() {
                 >
                   −
                 </button>
-                <div className="font-display text-7xl sm:text-8xl md:text-9xl text-gradient-ember leading-none w-24 sm:w-32 text-center tabular-nums">
+                <div className="font-display text-7xl sm:text-8xl md:text-9xl font-display italic brass-shimmer leading-none w-24 sm:w-32 text-center tabular-nums">
                   {guests}
                 </div>
                 <button
@@ -253,7 +253,7 @@ export function ReserveForm() {
                     onClick={() => setGuests(n)}
                     className={`px-4 py-2 rounded-full text-sm font-mono transition-all ${
                       guests === n
-                        ? "bg-[color:var(--ember)] text-[color:var(--obsidian)]"
+                        ? "bg-[color:var(--brass)] text-[color:var(--obsidian)]"
                         : "glass"
                     }`}
                   >
@@ -268,7 +268,7 @@ export function ReserveForm() {
             <div className="space-y-6">
               <div>
                 <h3 className="text-display-md mb-1 flex items-center gap-3">
-                  <MapPin className="text-[color:var(--ember)]" size={28} />
+                  <MapPin className="text-[color:var(--brass)]" size={28} />
                   Zgjedh tavolinën
                 </h3>
                 <p className="text-sm text-[color:var(--cream-soft)]/60">
@@ -289,12 +289,12 @@ export function ReserveForm() {
                   className="glass rounded-2xl p-4 flex items-center justify-between gap-3"
                 >
                   <div className="min-w-0">
-                    <div className="text-eyebrow !text-[color:var(--ember)]">E zgjedhur</div>
+                    <div className="text-eyebrow !text-[color:var(--brass)]">E zgjedhur</div>
                     <div className="font-display text-xl md:text-2xl mt-1 truncate">
                       {table.name} · {table.area.toUpperCase()} · {table.capacity} pers.
                     </div>
                   </div>
-                  <Sparkles className="text-[color:var(--ember)] shrink-0" />
+                  <Sparkles className="text-[color:var(--brass)] shrink-0" />
                 </motion.div>
               )}
             </div>
@@ -317,7 +317,7 @@ export function ReserveForm() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Emri i plotë"
-                    className="w-full px-4 py-3 rounded-xl glass focus:outline-none focus:border-[color:var(--ember)] transition-colors"
+                    className="w-full px-4 py-3 rounded-xl glass focus:outline-none focus:border-[color:var(--brass)] transition-colors"
                   />
                 </div>
                 <div>
@@ -330,7 +330,7 @@ export function ReserveForm() {
                       if (!whatsapp) setWhatsapp(e.target.value);
                     }}
                     placeholder="+383 ..."
-                    className="w-full px-4 py-3 rounded-xl glass focus:outline-none focus:border-[color:var(--ember)] transition-colors"
+                    className="w-full px-4 py-3 rounded-xl glass focus:outline-none focus:border-[color:var(--brass)] transition-colors"
                   />
                 </div>
                 <div className="md:col-span-2">
@@ -340,7 +340,7 @@ export function ReserveForm() {
                     value={whatsapp}
                     onChange={(e) => setWhatsapp(e.target.value)}
                     placeholder="Nëse ndryshe nga telefoni"
-                    className="w-full px-4 py-3 rounded-xl glass focus:outline-none focus:border-[color:var(--ember)] transition-colors"
+                    className="w-full px-4 py-3 rounded-xl glass focus:outline-none focus:border-[color:var(--brass)] transition-colors"
                   />
                 </div>
                 <div className="md:col-span-2">
@@ -350,7 +350,7 @@ export function ReserveForm() {
                     onChange={(e) => setNote(e.target.value)}
                     placeholder="Birthday cake, alergji, etj. (opsional)"
                     rows={3}
-                    className="w-full px-4 py-3 rounded-xl glass focus:outline-none focus:border-[color:var(--ember)] transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-xl glass focus:outline-none focus:border-[color:var(--brass)] transition-colors resize-none"
                   />
                 </div>
                 <label className="md:col-span-2 flex items-center gap-3 cursor-pointer">
@@ -358,7 +358,7 @@ export function ReserveForm() {
                     type="checkbox"
                     checked={eventNight}
                     onChange={(e) => setEventNight(e.target.checked)}
-                    className="w-5 h-5 accent-[color:var(--ember)]"
+                    className="w-5 h-5 accent-[color:var(--brass)]"
                   />
                   <span className="text-sm">Po vij për event live (live music / DJ night)</span>
                 </label>

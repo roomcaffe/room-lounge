@@ -14,7 +14,7 @@ export default function ReservePage() {
         <header className="mb-8 md:mb-12 text-center">
           <span className="text-eyebrow">Rezervo</span>
           <h1 className="text-display-lg mt-3 text-balance">
-            Zgjedh tavolinën <em className="text-gradient-ember">tënde</em>.
+            Zgjedh tavolinën <em className="font-display italic brass-shimmer">tënde</em>.
           </h1>
           <p className="mt-3 md:mt-4 text-sm md:text-base text-[color:var(--cream-soft)]/70 max-w-xl mx-auto text-pretty">
             4 hapa. Më pak se 60 sekonda. Tavolina jote të pret.

@@ -1,26 +1,35 @@
 @import "tailwindcss";
 
 /* ============================================
-   ROOM LOUNGE — DESIGN SYSTEM V2 "IMMERSIVE"
+   ROOM LOUNGE — DESIGN SYSTEM V3 "DECO SPEAKEASY"
+   Palette tuned to the actual interior renders
    ============================================ */
 
 @theme {
   /* Breakpoints */
   --breakpoint-xs: 22rem;
 
-  /* Palette V2 */
-  --color-obsidian: #0d0a08;
-  --color-obsidian-soft: #15110d;
-  --color-obsidian-card: #1c1814;
-  --color-cream: #f4ead8;
-  --color-cream-soft: #e8dcc4;
-  --color-ember: #d97942;
-  --color-ember-soft: #e89866;
+  /* Palette V3 — sampled from interior renders */
+  --color-obsidian: #0a0705;
+  --color-obsidian-soft: #14100b;
+  --color-obsidian-card: #1c1612;
+  --color-espresso: #2b2118;
+  --color-cream: #f0e4cf;
+  --color-cream-soft: #e0d2b8;
+  --color-brass: #c69b54;
+  --color-brass-soft: #d4ae6b;
+  --color-brass-deep: #8b6a32;
+  --color-ember: #d4844a;
+  --color-ember-soft: #e8a165;
   --color-ember-deep: #a85a2e;
+  --color-oxblood: #6b1f24;
+  --color-oxblood-soft: #8a2d33;
+  --color-velvet: #2a4538;
+  --color-velvet-soft: #3d5c4a;
   --color-gold: #c9a86a;
   --color-gold-soft: #d4b87e;
-  --color-line: rgba(244, 234, 216, 0.08);
-  --color-line-strong: rgba(244, 234, 216, 0.16);
+  --color-line: rgba(240, 228, 207, 0.08);
+  --color-line-strong: rgba(240, 228, 207, 0.16);
 
   /* Typography */
   --font-display: "Fraunces", "Cormorant Garamond", Georgia, serif;
@@ -33,17 +42,26 @@
 }
 
 :root {
-  --obsidian: #0d0a08;
-  --obsidian-soft: #15110d;
-  --obsidian-card: #1c1814;
-  --cream: #f4ead8;
-  --cream-soft: #e8dcc4;
-  --ember: #d97942;
-  --ember-soft: #e89866;
+  --obsidian: #0a0705;
+  --obsidian-soft: #14100b;
+  --obsidian-card: #1c1612;
+  --espresso: #2b2118;
+  --cream: #f0e4cf;
+  --cream-soft: #e0d2b8;
+  --brass: #c69b54;
+  --brass-soft: #d4ae6b;
+  --brass-deep: #8b6a32;
+  --ember: #d4844a;
+  --ember-soft: #e8a165;
   --ember-deep: #a85a2e;
+  --oxblood: #6b1f24;
+  --oxblood-soft: #8a2d33;
+  --velvet: #2a4538;
+  --velvet-soft: #3d5c4a;
   --gold: #c9a86a;
-  --line: rgba(244, 234, 216, 0.08);
-  --line-strong: rgba(244, 234, 216, 0.16);
+  --gold-soft: #d4b87e;
+  --line: rgba(240, 228, 207, 0.08);
+  --line-strong: rgba(240, 228, 207, 0.16);
   --cursor-x: 50vw;
   --cursor-y: 50vh;
 }
@@ -177,7 +195,7 @@ body {
 .bg-ember-glow {
   background: radial-gradient(
     ellipse at 50% 100%,
-    rgba(217, 121, 66, 0.18) 0%,
+    rgba(212, 132, 74, 0.22) 0%,
     transparent 55%
   );
 }
@@ -185,20 +203,51 @@ body {
 .bg-gold-glow {
   background: radial-gradient(
     circle at 50% 0%,
-    rgba(201, 168, 106, 0.10) 0%,
+    rgba(198, 155, 84, 0.14) 0%,
     transparent 60%
   );
 }
 
+.bg-brass-glow {
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(198, 155, 84, 0.18) 0%,
+    transparent 65%
+  );
+}
+
+.bg-velvet-glow {
+  background: radial-gradient(
+    ellipse at 0% 50%,
+    rgba(42, 69, 56, 0.32) 0%,
+    transparent 55%
+  );
+}
+
+.bg-oxblood-glow {
+  background: radial-gradient(
+    ellipse at 100% 50%,
+    rgba(107, 31, 36, 0.28) 0%,
+    transparent 55%
+  );
+}
+
 .text-gradient {
-  background: linear-gradient(135deg, var(--cream) 0%, var(--ember-soft) 50%, var(--gold) 100%);
+  background: linear-gradient(135deg, var(--cream) 0%, var(--brass-soft) 50%, var(--brass) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
 .text-gradient-ember {
-  background: linear-gradient(180deg, var(--ember-soft) 0%, var(--ember-deep) 100%);
+  background: linear-gradient(180deg, var(--brass-soft) 0%, var(--brass-deep) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-brass {
+  background: linear-gradient(135deg, var(--brass-soft) 0%, var(--brass) 40%, var(--brass-deep) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -234,7 +283,8 @@ body {
   gap: 0.5rem;
   padding: 0.875rem 1.5rem;
   min-height: 48px;
-  background: var(--ember);
+  background: linear-gradient(135deg, var(--brass-soft) 0%, var(--brass) 50%, var(--brass-deep) 100%);
+  box-shadow: 0 8px 28px -10px rgba(198, 155, 84, 0.55), inset 0 1px 0 rgba(255,255,255,0.18);
   color: var(--obsidian);
   font-weight: 500;
   font-size: 0.8rem;
@@ -263,6 +313,9 @@ body {
 .btn-primary:hover::before {
   transform: scaleX(1);
   transform-origin: left;
+}
+.btn-primary:hover {
+  box-shadow: 0 12px 36px -10px rgba(240, 228, 207, 0.45), inset 0 1px 0 rgba(255,255,255,0.25);
 }
 
 .btn-ghost {
@@ -310,7 +363,8 @@ body {
 .cursor-dot {
   width: 6px;
   height: 6px;
-  background: var(--ember);
+  background: var(--brass);
+  box-shadow: 0 0 12px rgba(198, 155, 84, 0.6);
   transition: width 0.3s var(--ease-expo), height 0.3s var(--ease-expo), background 0.3s ease;
 }
 
@@ -328,7 +382,7 @@ body.cursor-hover .cursor-dot {
 body.cursor-hover .cursor-ring {
   width: 64px;
   height: 64px;
-  border-color: var(--ember);
+  border-color: var(--brass);
 }
 
 /* ============================================
@@ -408,10 +462,83 @@ body.cursor-hover .cursor-ring {
   display: inline-block;
   width: 8px;
   height: 8px;
-  background: var(--ember);
+  background: var(--brass);
   border-radius: 50%;
-  box-shadow: 0 0 12px var(--ember);
+  box-shadow: 0 0 12px var(--brass);
   animation: pulse-soft 1.6s var(--ease-expo) infinite;
+}
+
+/* ============================================
+   DECO GEOMETRY — brass grilles & fan motifs
+   ============================================ */
+
+.deco-grille {
+  background-image:
+    linear-gradient(90deg, rgba(198,155,84,0.18) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(198,155,84,0.10) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+.deco-arch {
+  position: relative;
+  border-top-left-radius: 999px;
+  border-top-right-radius: 999px;
+  overflow: hidden;
+}
+
+.deco-frame {
+  position: relative;
+}
+.deco-frame::before,
+.deco-frame::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--brass);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.deco-frame::before { top: 0; left: 0; border-right: none; border-bottom: none; }
+.deco-frame::after  { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+.brass-divider {
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(198,155,84,0.0) 8%,
+    rgba(198,155,84,0.5) 35%,
+    rgba(212,174,107,0.85) 50%,
+    rgba(198,155,84,0.5) 65%,
+    rgba(198,155,84,0.0) 92%,
+    transparent 100%);
+}
+
+@keyframes shimmer-brass {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.brass-shimmer {
+  background: linear-gradient(90deg,
+    var(--brass-deep) 0%,
+    var(--brass-soft) 30%,
+    var(--cream) 50%,
+    var(--brass-soft) 70%,
+    var(--brass-deep) 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer-brass 6s linear infinite;
+}
+
+@keyframes ken-burns {
+  0% { transform: scale(1.08) translate3d(-1%, 0, 0); }
+  100% { transform: scale(1.18) translate3d(1%, -1%, 0); }
+}
+
+.animate-ken-burns {
+  animation: ken-burns 18s ease-in-out infinite alternate;
 }
 
 /* Section spacing rhythm */

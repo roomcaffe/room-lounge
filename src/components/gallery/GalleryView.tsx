@@ -6,7 +6,20 @@ import { X, ChevronLeft, ChevronRight, ImageIcon } from "lucide-react";
 
 type Img = { id: string; url: string; caption: string | null; category: string };
 
-export function GalleryView({ images }: { images: Img[] }) {
+const INTERIOR_RENDERS: Img[] = [
+  { id: "r-3", url: "/renders/render-3.jpg", caption: "The Main Hall — Brass arches, marble bar.", category: "interior" },
+  { id: "r-1", url: "/renders/render-1.jpg", caption: "Cocktail Lounge — cascading crystal under deep espresso.", category: "interior" },
+  { id: "r-5", url: "/renders/render-5.jpg", caption: "Amber Glow — glassblock columns x velvet banquettes.", category: "interior" },
+  { id: "r-2", url: "/renders/render-2.jpg", caption: "The Banquette — botanical print, candle warmth.", category: "interior" },
+  { id: "r-4", url: "/renders/render-4.jpg", caption: "The Bar — tufted oxblood and brass grid.", category: "interior" },
+  { id: "r-7", url: "/renders/render-7.jpg", caption: "Window Side — onyx counter on the avenue.", category: "interior" },
+  { id: "r-6", url: "/renders/render-6.jpg", caption: "Powder Room — Calacatta Viola, dark florals.", category: "interior" },
+  { id: "r-8", url: "/renders/render-8.jpg", caption: "Rooftop Terrace — Lipjan under bistro lights.", category: "interior" },
+  { id: "r-9", url: "/renders/render-9.jpg", caption: "Entry view — step in, slow down.", category: "interior" },
+];
+
+export function GalleryView({ images: dbImages }: { images: Img[] }) {
+  const images = dbImages.length > 0 ? [...INTERIOR_RENDERS, ...dbImages] : INTERIOR_RENDERS;
   const [active, setActive] = useState<number | null>(null);
 
   const close = () => setActive(null);
@@ -20,16 +33,16 @@ export function GalleryView({ images }: { images: Img[] }) {
       <header className="mb-16 max-w-3xl">
         <span className="text-eyebrow">Gallery</span>
         <h1 className="text-display-lg mt-3 text-balance">
-          Brenda <em className="text-gradient-ember">Room</em>.
+          Brenda <em className="font-display italic brass-shimmer">Room</em>.
         </h1>
         <p className="mt-4 text-lg text-[color:var(--cream-soft)]/70 text-pretty">
-          Atmosferë, ngjarje, momente. Ja një shije e asaj që të pret.
+          Brass, mermer, kadife, kristal — një shije e ambientit që të pret në Lipjan.
         </p>
       </header>
 
       {images.length === 0 ? (
         <div className="glass rounded-3xl p-16 text-center">
-          <ImageIcon size={32} className="mx-auto text-[color:var(--ember)] mb-4" />
+          <ImageIcon size={32} className="mx-auto text-[color:var(--brass)] mb-4" />
           <h3 className="font-display text-2xl mb-2">Galeria po freskohet</h3>
           <p className="text-[color:var(--cream-soft)]/60 max-w-md mx-auto">
             Foto të reja po vijnë së shpejti. Ndërkohë na ndiq në Instagram për pamje live.
@@ -48,7 +61,7 @@ export function GalleryView({ images }: { images: Img[] }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ duration: 0.6, delay: (i % 6) * 0.05, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative mb-4 block w-full overflow-hidden rounded-2xl break-inside-avoid border border-[color:var(--line)] hover:border-[color:var(--ember)] transition-colors"
+              className="group relative mb-4 block w-full overflow-hidden rounded-2xl break-inside-avoid border border-[color:var(--line)] hover:border-[color:var(--brass)] transition-colors"
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img

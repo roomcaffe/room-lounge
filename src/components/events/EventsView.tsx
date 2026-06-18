@@ -46,7 +46,7 @@ function Countdown({ date, time }: { date: string; time: string }) {
 
   if (!diff) return null;
   return (
-    <div className="font-mono text-xs uppercase tracking-wider text-[color:var(--ember)] flex gap-3">
+    <div className="font-mono text-xs uppercase tracking-wider text-[color:var(--brass)] flex gap-3">
       {diff.d > 0 && <span>{diff.d}d</span>}
       <span>{diff.h.toString().padStart(2, "0")}h</span>
       <span>{diff.m.toString().padStart(2, "0")}m</span>
@@ -63,7 +63,7 @@ export function EventsView({ events }: { events: Event[] }) {
       <header className="mb-16 max-w-3xl">
         <span className="text-eyebrow">Events</span>
         <h1 className="text-display-lg mt-3 text-balance">
-          Netë që <em className="text-gradient-ember">nuk harrohen</em>.
+          Netë që <em className="font-display italic brass-shimmer">nuk harrohen</em>.
         </h1>
         <p className="mt-4 text-lg text-[color:var(--cream-soft)]/70 text-pretty">
           Live music çdo të premte. DJ nights të shtunën. Match days. Festime private.
@@ -72,7 +72,7 @@ export function EventsView({ events }: { events: Event[] }) {
 
       {upcoming.length === 0 ? (
         <div className="glass rounded-3xl p-16 text-center">
-          <Sparkles size={32} className="mx-auto text-[color:var(--ember)] mb-4" />
+          <Sparkles size={32} className="mx-auto text-[color:var(--brass)] mb-4" />
           <h3 className="font-display text-2xl mb-2">Eventet po vijnë</h3>
           <p className="text-[color:var(--cream-soft)]/60 max-w-md mx-auto">
             Ndiqi @roomcaffe në Instagram për lajme në kohë reale për live nights, DJ sets dhe ngjarje speciale.
@@ -93,13 +93,13 @@ export function EventsView({ events }: { events: Event[] }) {
                   delay: i * 0.08,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="group relative rounded-3xl overflow-hidden border border-[color:var(--line)] hover:border-[color:var(--ember)] transition-colors duration-500"
+                className="group relative rounded-3xl overflow-hidden border border-[color:var(--line)] hover:border-[color:var(--brass)] transition-colors duration-500"
               >
                 <div className="relative grid md:grid-cols-12 gap-4 md:gap-6 p-5 md:p-8">
                   {/* Date column */}
                   <div className="md:col-span-2">
                     <div className="glass-strong rounded-2xl p-3 md:p-4 text-center inline-flex flex-col items-center">
-                      <span className="text-eyebrow !text-[color:var(--ember)]">
+                      <span className="text-eyebrow !text-[color:var(--brass)]">
                         {d.toLocaleString("sq-AL", { month: "short" })}
                       </span>
                       <span className="font-display text-5xl leading-none mt-1">
@@ -118,7 +118,7 @@ export function EventsView({ events }: { events: Event[] }) {
                     </h3>
                     {ev.artist && (
                       <p className="mt-2 text-sm text-[color:var(--cream-soft)]/70 flex items-center gap-2">
-                        <Music size={14} className="text-[color:var(--ember)]" />
+                        <Music size={14} className="text-[color:var(--brass)]" />
                         {ev.artist}
                       </p>
                     )}
@@ -129,7 +129,7 @@ export function EventsView({ events }: { events: Event[] }) {
                     )}
                     <div className="mt-4 flex flex-wrap items-center gap-4 text-sm">
                       <span className="flex items-center gap-2 text-[color:var(--cream-soft)]/70">
-                        <Clock size={14} className="text-[color:var(--ember)]" /> {ev.time}
+                        <Clock size={14} className="text-[color:var(--brass)]" /> {ev.time}
                       </span>
                       <Countdown date={ev.date} time={ev.time} />
                     </div>
