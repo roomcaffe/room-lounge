@@ -307,7 +307,17 @@ function Row({ label, children }: { label: string; children: React.ReactNode }) 
 }
 
 function areaLabel(a: string) {
-  return { indoor: "Indoor", outdoor: "Outdoor", vip: "VIP", stage: "Pranë Skenës" }[a] || a;
+  const map: Record<string, string> = {
+    main: "Salla Kryesore",
+    bar: "Bar Lounge",
+    vip: "VIP Lounge",
+    terrace: "Terrace",
+    // legacy
+    indoor: "Indoor",
+    outdoor: "Outdoor",
+    stage: "Pranë Skenës",
+  };
+  return map[a] || a;
 }
 
 function StatusBadge({ status }: { status: string }) {

@@ -3,7 +3,14 @@
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Calendar, Clock, Users, Check, ArrowRight, ArrowLeft, MapPin, Sparkles } from "lucide-react";
-import { FloorPlan, FloorTable, TABLES } from "./FloorPlan";
+import { FloorPlan, FloorTable } from "./FloorPlan";
+
+const AREA_LABEL: Record<string, string> = {
+  main: "Salla Kryesore",
+  bar: "Bar Lounge",
+  vip: "VIP Lounge",
+  terrace: "Terrace",
+};
 
 const TIMES = [
   "12:00", "13:00", "14:00", "15:00", "16:00",
@@ -71,6 +78,7 @@ export function ReserveForm() {
           time,
           guests,
           area: table.area,
+          tableName: table.name,
           specialRequest: note,
           eventNight,
         }),
@@ -291,7 +299,7 @@ export function ReserveForm() {
                   <div className="min-w-0">
                     <div className="text-eyebrow !text-[color:var(--brass)]">E zgjedhur</div>
                     <div className="font-display text-xl md:text-2xl mt-1 truncate">
-                      {table.name} · {table.area.toUpperCase()} · {table.capacity} pers.
+                      {table.name} · {AREA_LABEL[table.area] || table.area.toUpperCase()} · {table.capacity} pers.
                     </div>
                   </div>
                   <Sparkles className="text-[color:var(--brass)] shrink-0" />

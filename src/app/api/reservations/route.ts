@@ -9,7 +9,10 @@ const schema = z.object({
   date: z.string().min(1),
   time: z.string().min(1),
   guests: z.coerce.number().min(1).max(50),
-  area: z.enum(["indoor", "outdoor", "vip", "stage"]),
+  // Mbështet zonat e reja + ato të vjetra (backwards compat)
+  area: z.enum(["main", "bar", "vip", "terrace", "indoor", "outdoor", "stage"]),
+  tableId: z.string().optional(),
+  tableName: z.string().optional(),
   specialRequest: z.string().optional(),
   eventNight: z.boolean().optional(),
 });
@@ -18,6 +21,13 @@ export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
     const data = schema.parse(body);
+
+    // Resolve tableId nga tableName nëse është dërguar
+    let resolvedTableId = data.tableId;
+    if (!resolvedTableId && data.tableName) {
+      const t = await prisma.table.findFirst({ where: { name: data.tableName } });
+      resolvedTableId = t?.id;
+    }
 
     const reservation = await prisma.reservation.create({
       data: {
@@ -28,6 +38,7 @@ export async function POST(req: NextRequest) {
         time: data.time,
         guests: data.guests,
         area: data.area,
+        tableId: resolvedTableId,
         specialRequest: data.specialRequest,
         eventNight: data.eventNight ?? false,
         status: "pending",

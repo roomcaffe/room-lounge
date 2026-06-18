@@ -5,10 +5,14 @@ import { Table } from "@prisma/client";
 import { Plus, Trash2, Edit2, Users } from "lucide-react";
 
 const AREAS = [
-  { value: "indoor", label: "Indoor" },
-  { value: "outdoor", label: "Outdoor" },
-  { value: "vip", label: "VIP" },
-  { value: "stage", label: "Pranë Skenës" },
+  { value: "main", label: "Salla Kryesore" },
+  { value: "bar", label: "Bar Lounge" },
+  { value: "vip", label: "VIP Lounge" },
+  { value: "terrace", label: "Terrace" },
+  // legacy (mbështetje për rezervime të vjetra)
+  { value: "indoor", label: "Indoor (legacy)" },
+  { value: "outdoor", label: "Outdoor (legacy)" },
+  { value: "stage", label: "Stage (legacy)" },
 ];
 
 export function TablesManager({ initial }: { initial: Table[] }) {
@@ -111,7 +115,7 @@ function TableForm({
   const [form, setForm] = useState({
     name: initial?.name || "",
     capacity: initial?.capacity?.toString() || "4",
-    area: initial?.area || "indoor",
+    area: initial?.area || "main",
     available: initial?.available ?? true,
     notes: initial?.notes || "",
   });
