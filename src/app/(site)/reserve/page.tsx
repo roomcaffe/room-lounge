@@ -2,9 +2,9 @@ import { Metadata } from "next";
 import { ReserveForm } from "@/components/reserve/ReserveForm";
 
 export const metadata: Metadata = {
-  title: "Rezervo Tavolinën",
+  title: "Rezervo",
   description:
-    "Rezervo tavolinën tënde në Room Lounge me floor plan interaktiv. Konfirmim me WhatsApp brenda pak minutash.",
+    "Rezervo vendin tënd në Room Lounge. Konfirmim me WhatsApp brenda pak minutash.",
 };
 
 export default function ReservePage() {
@@ -14,10 +14,10 @@ export default function ReservePage() {
         <header className="mb-8 md:mb-12 text-center">
           <span className="text-eyebrow">Rezervo</span>
           <h1 className="text-display-lg mt-3 text-balance">
-            Zgjedh tavolinën <em className="font-display italic brass-shimmer">tënde</em>.
+            Rezervo vendin <em className="font-display italic brass-shimmer">tënd</em>.
           </h1>
           <p className="mt-3 md:mt-4 text-sm md:text-base text-[color:var(--cream-soft)]/70 max-w-xl mx-auto text-pretty">
-            4 hapa. Më pak se 60 sekonda. Tavolina jote të pret.
+            4 hapa. Më pak se 60 sekonda. Vendi yt të pret.
           </p>
         </header>
 

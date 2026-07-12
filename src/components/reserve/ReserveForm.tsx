@@ -2,15 +2,14 @@
 
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, Clock, Users, Check, ArrowRight, ArrowLeft, MapPin, Sparkles } from "lucide-react";
-import { FloorPlan, FloorTable } from "./FloorPlan";
+import { Calendar, Clock, Users, Check, ArrowRight, ArrowLeft, MapPin } from "lucide-react";
 
-const AREA_LABEL: Record<string, string> = {
-  main: "Salla Kryesore",
-  bar: "Bar Lounge",
-  vip: "VIP Lounge",
-  terrace: "Terrace",
-};
+const ZONES = [
+  { id: "brenda", label: "Brenda", desc: "Ambiente e brendshme, klimatizuar" },
+  { id: "jashte", label: "Jashtë", desc: "Tarracë, ajër i pastër" },
+] as const;
+
+type ZoneId = (typeof ZONES)[number]["id"];
 
 const TIMES = [
   "12:00", "13:00", "14:00", "15:00", "16:00",
@@ -40,7 +39,7 @@ export function ReserveForm() {
   const [date, setDate] = useState<Date | null>(null);
   const [time, setTime] = useState<string | null>(null);
   const [guests, setGuests] = useState(2);
-  const [table, setTable] = useState<FloorTable | null>(null);
+  const [zone, setZone] = useState<ZoneId | null>(null);
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -57,13 +56,13 @@ export function ReserveForm() {
   const canNext = (() => {
     if (step === 0) return date && time;
     if (step === 1) return guests >= 1 && guests <= 20;
-    if (step === 2) return table !== null;
+    if (step === 2) return zone !== null;
     if (step === 3) return name.length > 1 && phone.length > 5;
     return false;
   })();
 
   async function submit() {
-    if (!date || !time || !table) return;
+    if (!date || !time || !zone) return;
     setSubmitting(true);
     setError(null);
     try {
@@ -77,8 +76,8 @@ export function ReserveForm() {
           date: date.toISOString().slice(0, 10),
           time,
           guests,
-          area: table.area,
-          tableName: table.name,
+          area: zone,
+          tableName: null,
           specialRequest: note,
           eventNight,
         }),
@@ -273,38 +272,41 @@ export function ReserveForm() {
           )}
 
           {step === 2 && (
-            <div className="space-y-6">
-              <div>
-                <h3 className="text-display-md mb-1 flex items-center gap-3">
+            <div className="flex flex-col items-center justify-center min-h-[400px] gap-8">
+              <div className="text-center">
+                <h3 className="text-display-md mb-1 flex items-center gap-3 justify-center">
                   <MapPin className="text-[color:var(--brass)]" size={28} />
-                  Zgjedh tavolinën
+                  Ku dëshiron të ulesh?
                 </h3>
-                <p className="text-sm text-[color:var(--cream-soft)]/60">
-                  Tap mbi tavolinat. Numri tregon kapacitetin.
-                </p>
+                <p className="text-sm text-[color:var(--cream-soft)]/60">Zgjedh zonën</p>
               </div>
 
-              <FloorPlan
-                selected={table?.id}
-                onSelect={(t) => setTable(t)}
-                guests={guests}
-              />
-
-              {table && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="glass rounded-2xl p-4 flex items-center justify-between gap-3"
-                >
-                  <div className="min-w-0">
-                    <div className="text-eyebrow !text-[color:var(--brass)]">E zgjedhur</div>
-                    <div className="font-display text-xl md:text-2xl mt-1 truncate">
-                      {table.name} · {AREA_LABEL[table.area] || table.area.toUpperCase()} · {table.capacity} pers.
-                    </div>
-                  </div>
-                  <Sparkles className="text-[color:var(--brass)] shrink-0" />
-                </motion.div>
-              )}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-lg">
+                {ZONES.map((z) => {
+                  const isSelected = zone === z.id;
+                  return (
+                    <button
+                      key={z.id}
+                      onClick={() => setZone(z.id)}
+                      className={`relative rounded-2xl p-6 text-left transition-all duration-300 ${
+                        isSelected
+                          ? "bg-[color:var(--brass)] text-[color:var(--obsidian)]"
+                          : "glass hover:bg-[color:var(--cream)]/8"
+                      }`}
+                    >
+                      {isSelected && (
+                        <div className="absolute top-4 right-4">
+                          <Check size={20} />
+                        </div>
+                      )}
+                      <div className="font-display text-2xl mb-2">{z.label}</div>
+                      <div className={`text-sm ${isSelected ? "opacity-70" : "text-[color:var(--cream-soft)]/60"}`}>
+                        {z.desc}
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           )}
 
@@ -389,8 +391,8 @@ export function ReserveForm() {
                   <div className="mt-1 font-mono">{guests}</div>
                 </div>
                 <div>
-                  <div className="text-eyebrow">Tavolina</div>
-                  <div className="mt-1">{table?.name}</div>
+                  <div className="text-eyebrow">Zona</div>
+                  <div className="mt-1">{ZONES.find(z => z.id === zone)?.label}</div>
                 </div>
               </div>
 

@@ -8,25 +8,25 @@ const drinks = [
   {
     name: "Espresso",
     desc: "Italiane klasike. Kremoz, intens, pa kompromis.",
-    price: "1.50",
+    price: "?",
     accent: "from-[#3a2419] to-[#14100b]",
   },
   {
     name: "Negroni",
     desc: "Gin, Campari, vermouth. Klasiku që dridh shandelierin.",
-    price: "5.50",
+    price: "?",
     accent: "from-[#8a2d33] to-[#3a141a]",
   },
   {
     name: "Old Fashioned",
     desc: "Whiskey, sheqer i ndezur, bitter. Pa kompromis.",
-    price: "6.00",
+    price: "?",
     accent: "from-[#8b6a32] to-[#2b2118]",
   },
   {
     name: "Aperol Spritz",
     desc: "Aperol, prosecco, soda — me zë përté mbrëmjes verore.",
-    price: "4.50",
+    price: "?",
     accent: "from-[#d4844a] to-[#a85a2e]",
   },
 ];
@@ -72,7 +72,7 @@ export function Drinks() {
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <span className="font-mono text-[10px] md:text-xs glass px-2.5 md:px-3 py-1 rounded-full">
-                    €{drink.price}
+                    {drink.price === "?" ? "—" : `€${drink.price}`}
                   </span>
                 </div>
 
