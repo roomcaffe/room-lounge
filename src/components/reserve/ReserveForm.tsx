@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, Clock, Users, Check, ArrowRight, ArrowLeft, MapPin } from "lucide-react";
+import { Calendar, Clock, Users, Check, ArrowRight, ArrowLeft, MapPin, MessageCircle } from "lucide-react";
 
 const ZONES = [
   { id: "brenda", label: "Brenda", desc: "Ambiente e brendshme, klimatizuar" },
@@ -43,13 +43,6 @@ export function ReserveForm() {
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
-  const [whatsapp, setWhatsapp] = useState("");
-  const [note, setNote] = useState("");
-  const [eventNight, setEventNight] = useState(false);
-
-  const [submitting, setSubmitting] = useState(false);
-  const [done, setDone] = useState<{ id: string } | null>(null);
-  const [error, setError] = useState<string | null>(null);
 
   const days = useMemo(() => generateDays(14), []);
 
@@ -61,57 +54,24 @@ export function ReserveForm() {
     return false;
   })();
 
-  async function submit() {
-    if (!date || !time || !zone) return;
-    setSubmitting(true);
-    setError(null);
-    try {
-      const res = await fetch("/api/reservations", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          fullName: name,
-          phone,
-          whatsapp: whatsapp || phone,
-          date: date.toISOString().slice(0, 10),
-          time,
-          guests,
-          area: zone,
-          tableName: null,
-          specialRequest: note,
-          eventNight,
-        }),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || "Gabim në server");
-      setDone({ id: data.id });
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Gabim");
-    } finally {
-      setSubmitting(false);
-    }
-  }
-
-  if (done) {
-    return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className="glass-strong rounded-3xl p-10 text-center"
-      >
-        <div className="w-16 h-16 rounded-full bg-[color:var(--brass)]/15 border border-[color:var(--brass)] flex items-center justify-center mx-auto mb-6">
-          <Check size={28} className="text-[color:var(--brass)]" />
-        </div>
-        <h3 className="text-display-md mb-3">Rezervimi u dërgua.</h3>
-        <p className="text-[color:var(--cream-soft)]/70 max-w-md mx-auto text-pretty">
-          Stafi ynë do ta konfirmojë në WhatsApp brenda pak minutash. Faleminderit që zgjodhët Room.
-        </p>
-        <div className="mt-8 text-xs font-mono text-[color:var(--cream-soft)]/40">
-          Ref: #{done.id.slice(-8).toUpperCase()}
-        </div>
-      </motion.div>
-    );
+  function submit() {
+    if (!date || !time || !zone || !name || !phone) return;
+    
+    const dateStr = date.toLocaleDateString("sq-AL", { weekday: "long", day: "numeric", month: "long" });
+    const zoneLabel = ZONES.find(z => z.id === zone)?.label || zone;
+    
+    const message = `Përshëndetje! Dua të rezervoj:\n\n` +
+      `📅 ${dateStr}\n` +
+      `🕐 Ora ${time}\n` +
+      `👥 ${guests} persona\n` +
+      `📍 ${zoneLabel}\n\n` +
+      `Emri: ${name}\n` +
+      `Tel: ${phone}`;
+    
+    const waNumber = "38344123456"; // Room Lounge WhatsApp
+    const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+    
+    window.open(waUrl, "_blank");
   }
 
   return (
@@ -315,7 +275,7 @@ export function ReserveForm() {
               <div>
                 <h3 className="text-display-md mb-1">Të dhënat e tua</h3>
                 <p className="text-sm text-[color:var(--cream-soft)]/60">
-                  Konfirmim me WhatsApp brenda pak minutash.
+                  Konfirmim direkt në WhatsApp.
                 </p>
               </div>
 
@@ -326,52 +286,20 @@ export function ReserveForm() {
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="Emri i plotë"
+                    placeholder="Emri yt"
                     className="w-full px-4 py-3 rounded-xl glass focus:outline-none focus:border-[color:var(--brass)] transition-colors"
                   />
                 </div>
                 <div>
-                  <label className="text-eyebrow block mb-2">Telefoni</label>
+                  <label className="text-eyebrow block mb-2">Numri</label>
                   <input
                     type="tel"
                     value={phone}
-                    onChange={(e) => {
-                      setPhone(e.target.value);
-                      if (!whatsapp) setWhatsapp(e.target.value);
-                    }}
+                    onChange={(e) => setPhone(e.target.value)}
                     placeholder="+383 ..."
                     className="w-full px-4 py-3 rounded-xl glass focus:outline-none focus:border-[color:var(--brass)] transition-colors"
                   />
                 </div>
-                <div className="md:col-span-2">
-                  <label className="text-eyebrow block mb-2">WhatsApp (opsional)</label>
-                  <input
-                    type="tel"
-                    value={whatsapp}
-                    onChange={(e) => setWhatsapp(e.target.value)}
-                    placeholder="Nëse ndryshe nga telefoni"
-                    className="w-full px-4 py-3 rounded-xl glass focus:outline-none focus:border-[color:var(--brass)] transition-colors"
-                  />
-                </div>
-                <div className="md:col-span-2">
-                  <label className="text-eyebrow block mb-2">Kërkesë speciale</label>
-                  <textarea
-                    value={note}
-                    onChange={(e) => setNote(e.target.value)}
-                    placeholder="Birthday cake, alergji, etj. (opsional)"
-                    rows={3}
-                    className="w-full px-4 py-3 rounded-xl glass focus:outline-none focus:border-[color:var(--brass)] transition-colors resize-none"
-                  />
-                </div>
-                <label className="md:col-span-2 flex items-center gap-3 cursor-pointer">
-                  <input
-                    type="checkbox"
-                    checked={eventNight}
-                    onChange={(e) => setEventNight(e.target.checked)}
-                    className="w-5 h-5 accent-[color:var(--brass)]"
-                  />
-                  <span className="text-sm">Po vij për event live (live music / DJ night)</span>
-                </label>
               </div>
 
               {/* Summary */}
@@ -395,12 +323,6 @@ export function ReserveForm() {
                   <div className="mt-1">{ZONES.find(z => z.id === zone)?.label}</div>
                 </div>
               </div>
-
-              {error && (
-                <div className="rounded-xl border border-red-500/40 bg-red-500/10 p-4 text-red-300 text-sm">
-                  {error}
-                </div>
-              )}
             </div>
           )}
         </motion.div>
@@ -427,10 +349,10 @@ export function ReserveForm() {
         ) : (
           <button
             onClick={submit}
-            disabled={!canNext || submitting}
+            disabled={!canNext}
             className="btn-primary !px-5 !py-2.5 md:!px-7 md:!py-3 !text-[11px] md:!text-xs flex-1 max-w-[14rem] justify-center disabled:opacity-30 disabled:pointer-events-none"
           >
-            {submitting ? "Po dërgohet..." : "Konfirmo"} <Check size={14} />
+            Dërgo në WhatsApp <ArrowRight size={14} />
           </button>
         )}
       </div>
