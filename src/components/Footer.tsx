@@ -13,7 +13,6 @@ const navColumns = [
     title: "Eksploro",
     links: [
       { href: "/", label: "Home" },
-      { href: "/menu", label: "Menu" },
       { href: "/events", label: "Events" },
       { href: "/gallery", label: "Gallery" },
     ],

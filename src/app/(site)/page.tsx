@@ -3,7 +3,6 @@ import { Hero } from "@/components/home/Hero";
 import { Marquee } from "@/components/home/Marquee";
 import { TheSpace } from "@/components/home/TheSpace";
 import { Chapters } from "@/components/home/Chapters";
-import { Drinks } from "@/components/home/Drinks";
 import { EventsTeaser } from "@/components/home/EventsTeaser";
 import { CallToVisit } from "@/components/home/CallToVisit";
 
@@ -38,7 +37,6 @@ export default async function HomePage() {
       <Marquee />
       <TheSpace />
       <Chapters />
-      <Drinks />
       <EventsTeaser
         events={events.map((e) => ({
           ...e,

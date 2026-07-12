@@ -6,9 +6,17 @@ export function middleware(req: NextRequest) {
   const host = req.headers.get("host")?.toLowerCase() ?? "";
   const isAdminHost = host === "admin.roomcaffe.com";
 
-  if (!isAdminHost) return NextResponse.next();
-
   const { pathname, search } = req.nextUrl;
+
+  // Public menu is temporarily hidden.
+  if (pathname === "/menu" || pathname.startsWith("/menu/")) {
+    const url = req.nextUrl.clone();
+    url.pathname = "/";
+    url.search = "";
+    return NextResponse.redirect(url, 307);
+  }
+
+  if (!isAdminHost) return NextResponse.next();
 
   // Already pointing at /admin/* — leave it alone
   if (pathname === "/admin" || pathname.startsWith("/admin/")) {
