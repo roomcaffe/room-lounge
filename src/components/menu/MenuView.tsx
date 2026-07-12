@@ -114,10 +114,6 @@ export function MenuView({ items }: { items: Item[] }) {
                   <h3 className="font-display text-xl md:text-2xl flex-1 min-w-0 group-hover:text-[color:var(--cream)] transition-colors">
                     {item.name}
                   </h3>
-                  <span className="hidden md:block flex-1 border-b border-dotted border-[color:var(--line-strong)] mb-1.5" />
-                  <span className="font-mono text-base md:text-lg text-[color:var(--brass)] tabular-nums shrink-0">
-                    €{item.price.toFixed(2)}
-                  </span>
                 </div>
                 {item.description && (
                   <p className="mt-2 text-sm text-[color:var(--cream-soft)]/60 text-pretty">
@@ -133,7 +129,7 @@ export function MenuView({ items }: { items: Item[] }) {
       {/* Bottom note */}
       <div className="mt-20 glass-strong rounded-3xl p-8 text-center">
         <p className="text-[color:var(--cream-soft)]/70">
-          Çmimet në Euro. Cash & card. Tips welcome.
+          Cash & card. Tips welcome.
         </p>
       </div>
     </div>
