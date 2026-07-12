@@ -37,21 +37,22 @@ function Chapter({ chapter, index }: { chapter: typeof chapters[0]; index: numbe
     offset: ["start end", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [80, -80]);
+  const y = useTransform(scrollYProgress, [0, 1], [42, -42]);
   const opacity = useTransform(
     scrollYProgress,
     [0, 0.3, 0.7, 1],
-    [0.2, 1, 1, 0.2]
+    [0.72, 1, 1, 0.72]
   );
 
   return (
     <motion.div
       ref={ref}
       style={{ y, opacity }}
-      className={`grid lg:grid-cols-12 gap-4 md:gap-6 lg:gap-10 items-end py-12 md:py-20 lg:py-32 ${
+      className={`relative grid lg:grid-cols-12 gap-4 md:gap-6 lg:gap-10 items-end py-10 md:py-16 lg:py-24 px-4 md:px-6 lg:px-8 border border-[color:var(--line)] bg-[linear-gradient(135deg,rgba(240,228,207,0.045),rgba(198,155,84,0.025)_45%,rgba(10,7,5,0.05))] backdrop-blur-sm ${
         index % 2 === 1 ? "lg:[direction:rtl]" : ""
       }`}
     >
+      <div className="absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(198,155,84,0.42),transparent)]" />
       <div className="lg:col-span-2 [direction:ltr]">
         <span className="chapter-num">Chapter {chapter.num}</span>
       </div>
@@ -59,7 +60,7 @@ function Chapter({ chapter, index }: { chapter: typeof chapters[0]; index: numbe
         <h3 className="text-display-lg text-balance">{chapter.title}</h3>
       </div>
       <div className="lg:col-span-4 [direction:ltr]">
-        <p className="text-base md:text-lg text-[color:var(--cream-soft)]/70 text-pretty">
+        <p className="text-base md:text-lg text-[color:var(--cream-soft)]/82 leading-relaxed text-pretty">
           {chapter.text}
         </p>
         <div className="mt-4 md:mt-6 inline-flex items-center gap-2 text-eyebrow">
@@ -73,8 +74,9 @@ function Chapter({ chapter, index }: { chapter: typeof chapters[0]; index: numbe
 
 export function Chapters() {
   return (
-    <section className="relative section overflow-hidden">
-      <div className="absolute inset-0 bg-brass-glow pointer-events-none opacity-40" />
+    <section className="relative section overflow-hidden bg-[linear-gradient(180deg,var(--obsidian)_0%,#110d09_44%,var(--obsidian-soft)_100%)]">
+      <div className="absolute inset-0 bg-brass-glow pointer-events-none opacity-55" />
+      <div className="absolute inset-0 deco-grille pointer-events-none opacity-[0.045]" />
       <div className="container-edge relative">
         <div className="max-w-2xl mb-12 md:mb-20">
           <span className="text-eyebrow">Story</span>
@@ -84,7 +86,7 @@ export function Chapters() {
           </h2>
         </div>
 
-        <div className="divide-y divide-[color:var(--line)] lg:divide-y-0">
+        <div className="grid gap-4 md:gap-5">
           {chapters.map((ch, i) => (
             <Chapter key={ch.num} chapter={ch} index={i} />
           ))}

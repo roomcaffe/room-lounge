@@ -52,7 +52,9 @@ export function Nav() {
         style={{
           backdropFilter: scrolled ? "blur(20px) saturate(150%)" : "blur(8px)",
           WebkitBackdropFilter: scrolled ? "blur(20px) saturate(150%)" : "blur(8px)",
-          background: scrolled ? "rgba(10,7,5,0.75)" : "rgba(10,7,5,0.18)",
+          background: scrolled
+            ? "linear-gradient(180deg, rgba(10,7,5,0.92), rgba(10,7,5,0.78))"
+            : "linear-gradient(180deg, rgba(10,7,5,0.38), rgba(10,7,5,0.08))",
           borderBottom: scrolled
             ? "1px solid rgba(244,234,216,0.08)"
             : "1px solid transparent",
@@ -105,7 +107,7 @@ export function Nav() {
           <div className="flex items-center gap-2 md:gap-3">
             <Link
               href="/reserve"
-              className="btn-primary !py-2 !px-3.5 md:!py-2.5 md:!px-5 !text-[10px] md:!text-xs !min-h-0 !tracking-[0.08em] md:!tracking-[0.12em]"
+              className="btn-primary !py-2 !px-3.5 md:!py-2.5 md:!px-5 !text-[10px] md:!text-xs !min-h-0 !tracking-[0.08em] md:!tracking-[0.12em] !shadow-[0_8px_24px_-14px_rgba(198,155,84,0.7)]"
             >
               Rezervo
             </Link>

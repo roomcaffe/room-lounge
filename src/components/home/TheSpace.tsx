@@ -66,7 +66,7 @@ function SceneRow({ scene, index }: { scene: Scene; index: number }) {
   const opacity = useTransform(
     scrollYProgress,
     [0, 0.25, 0.75, 1],
-    [0.4, 1, 1, 0.4]
+    [0.68, 1, 1, 0.68]
   );
   const imgY = useTransform(scrollYProgress, [0, 1], [-40, 40]);
 
@@ -88,6 +88,8 @@ function SceneRow({ scene, index }: { scene: Scene; index: number }) {
               src={scene.src}
               alt={scene.title}
               fill
+              priority={index < 2}
+              loading={index < 2 ? undefined : "eager"}
               sizes="(min-width: 1024px) 60vw, 100vw"
               quality={86}
               style={{ objectFit: "cover" }}

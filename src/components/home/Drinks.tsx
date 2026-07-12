@@ -55,7 +55,7 @@ export function Drinks() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.7, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] }}
-              className="group relative aspect-[3/4] rounded-3xl overflow-hidden cursor-pointer"
+              className="group relative aspect-[3/4] rounded-[1.4rem] md:rounded-[1.75rem] overflow-hidden cursor-pointer border border-[color:var(--line)]"
             >
               <div
                 className={`absolute inset-0 bg-gradient-to-br ${drink.accent} opacity-90`}

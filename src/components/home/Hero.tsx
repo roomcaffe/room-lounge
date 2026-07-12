@@ -90,11 +90,11 @@ export function Hero() {
       />
 
       {/* Tonal grading veils — lighter for clearer photography */}
-      <div className="absolute inset-0 z-10 pointer-events-none bg-[linear-gradient(180deg,rgba(10,7,5,0.35)_0%,rgba(10,7,5,0.05)_40%,rgba(10,7,5,0.40)_78%,var(--obsidian)_100%)]" />
+      <div className="absolute inset-0 z-10 pointer-events-none bg-[linear-gradient(180deg,rgba(10,7,5,0.42)_0%,rgba(10,7,5,0.08)_38%,rgba(10,7,5,0.46)_78%,var(--obsidian)_100%)]" />
       <div className="absolute inset-0 z-10 pointer-events-none bg-[radial-gradient(ellipse_at_70%_30%,rgba(198,155,84,0.12)_0%,transparent_55%)]" />
       <div className="absolute inset-0 z-10 pointer-events-none bg-[radial-gradient(ellipse_at_15%_85%,rgba(107,31,36,0.18)_0%,transparent_50%)]" />
       {/* Soft scrim only under the text block (left side, bottom) so copy stays readable on bright frames */}
-      <div className="absolute inset-0 z-10 pointer-events-none bg-[linear-gradient(90deg,rgba(10,7,5,0.55)_0%,rgba(10,7,5,0.15)_55%,transparent_85%)]" />
+      <div className="absolute inset-0 z-10 pointer-events-none bg-[linear-gradient(90deg,rgba(10,7,5,0.68)_0%,rgba(10,7,5,0.26)_48%,rgba(10,7,5,0.04)_82%,transparent_100%)]" />
 
       {/* Subtle brass grille at the very top */}
       <div className="absolute top-0 left-0 right-0 h-1 z-20 brass-divider opacity-80" />
@@ -107,7 +107,7 @@ export function Hero() {
       </div>
 
       {/* Hero content */}
-      <div className="relative z-20 container-edge min-h-[100svh] flex flex-col justify-end pt-44 md:pt-40 pb-28 md:pb-32">
+      <div className="relative z-20 container-edge min-h-[100svh] flex flex-col justify-end pt-44 md:pt-40 pb-24 md:pb-28">
         <span
           className="text-eyebrow mb-6 opacity-0"
           style={{ animation: "fadeUp 1s var(--ease-expo) 0.2s forwards" }}
@@ -125,7 +125,7 @@ export function Hero() {
         </h1>
 
         <p
-          className="mt-5 md:mt-6 max-w-md text-base md:text-lg text-[color:var(--cream-soft)]/80 text-pretty opacity-0"
+          className="mt-5 md:mt-6 max-w-lg text-base md:text-lg text-[color:var(--cream-soft)]/86 text-pretty opacity-0"
           style={{ animation: "fadeUp 1.2s var(--ease-expo) 0.7s forwards" }}
         >
           Speakeasy lounge në zemër të Lipjanit. Brass, mermer, kadife —
