@@ -71,9 +71,7 @@ export function Drinks() {
                   <span className="text-eyebrow !text-[color:var(--cream)]">
                     {String(i + 1).padStart(2, "0")}
                   </span>
-                  <span className="font-mono text-[10px] md:text-xs glass px-2.5 md:px-3 py-1 rounded-full">
-                    {drink.price === "?" ? "—" : `€${drink.price}`}
-                  </span>
+
                 </div>
 
                 <div>
