@@ -42,7 +42,7 @@ export function Footer() {
             <span className="block text-[color:var(--cream-soft)]/30">Lounge</span>
           </h2>
           <p className="mt-5 md:mt-6 text-[color:var(--cream-soft)]/60 max-w-md text-pretty text-sm md:text-base">
-            Mbi 18 vite në Lipjan. Vendi ku gjeneratat takohen, miqësitë lindin
+            Mbi 19 vite në Lipjan. Vendi ku gjeneratat takohen, miqësitë lindin
             dhe momentet bëhen kujtime.
           </p>
         </div>

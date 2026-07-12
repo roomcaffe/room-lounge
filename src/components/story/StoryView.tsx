@@ -36,9 +36,9 @@ const chapters = [
   },
   {
     year: "2025",
-    title: "18 vite. Akoma këtu.",
+    title: "19 vite. Akoma këtu.",
     body:
-      "Gjenerata e parë e klientëve tani sjell fëmijët e tyre. Brezi i ri vjen për DJ nights. Diaspora kthehet veçanërisht për Room. Ne jemi këtu — për 18 vitet e ardhshme.",
+      "Gjenerata e parë e klientëve tani sjell fëmijët e tyre. Brezi i ri vjen për DJ nights. Diaspora kthehet veçanërisht për Room. Ne jemi këtu — për 19 vitet e ardhshme.",
     keyword: "Sot",
   },
 ];
@@ -102,7 +102,7 @@ export function StoryView() {
         <div className="relative max-w-4xl">
           <span className="text-eyebrow">Story</span>
           <h1 className="text-display-xl mt-4 text-balance leading-[0.9]">
-            18 vite.<br />
+            19 vite.<br />
             Një vend. <em className="font-display italic brass-shimmer">Pa lëvizur.</em>
           </h1>
           <p className="mt-6 md:mt-8 text-base md:text-xl text-[color:var(--cream-soft)]/70 text-pretty max-w-2xl">

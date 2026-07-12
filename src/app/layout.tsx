@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     template: "%s · Room Lounge",
   },
   description:
-    "18 vite në Lipjan. Coffee, cocktails, live music. Hyr në lounge para se të vish.",
+    "19 vite në Lipjan. Coffee, cocktails, live music. Hyr në lounge para se të vish.",
   keywords: [
     "Room Lounge",
     "RoomCaffe",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Room Lounge — Lipjan",
     description:
-      "18 vite në Lipjan. Coffee, cocktails, live music. Hyr në lounge para se të vish.",
+      "19 vite në Lipjan. Coffee, cocktails, live music. Hyr në lounge para se të vish.",
     url: "https://roomcaffe.com",
     siteName: "Room Lounge",
     locale: "sq_AL",
@@ -54,7 +54,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Room Lounge — Lipjan",
-    description: "18 vite në Lipjan. Hyr në lounge para se të vish.",
+    description: "19 vite në Lipjan. Hyr në lounge para se të vish.",
   },
 };
 

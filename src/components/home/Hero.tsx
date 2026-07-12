@@ -112,7 +112,7 @@ export function Hero() {
           className="text-eyebrow mb-6 opacity-0"
           style={{ animation: "fadeUp 1s var(--ease-expo) 0.2s forwards" }}
         >
-          Lipjan · Est. 2007 · 18 vite
+          Lipjan · Est. 2007 · 19 vite
         </span>
 
         <h1
@@ -129,7 +129,7 @@ export function Hero() {
           style={{ animation: "fadeUp 1.2s var(--ease-expo) 0.7s forwards" }}
         >
           Speakeasy lounge në zemër të Lipjanit. Brass, mermer, kadife —
-          dhe netë që janë treguar 18 vite me radhë.
+          dhe netë që janë treguar 19 vite me radhë.
         </p>
 
         <div

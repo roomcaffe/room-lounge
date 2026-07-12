@@ -24,7 +24,7 @@ const chapters = [
   },
   {
     num: "04",
-    title: "18 vite më vonë",
+    title: "19 vite më vonë",
     text: "Ende këtu. Ende ku po rritet gjenerata e re. Ende vendi ku Lipjani vjen për tu ndjerë në shtëpi.",
     keyword: "Sot",
   },

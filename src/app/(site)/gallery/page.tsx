@@ -4,7 +4,7 @@ import { GalleryView } from "@/components/gallery/GalleryView";
 
 export const metadata: Metadata = {
   title: "Gallery",
-  description: "Brenda Room Lounge. Atmosferë, ngjarje, momente nga 18 vite.",
+  description: "Brenda Room Lounge. Atmosferë, ngjarje, momente nga 19 vite.",
 };
 
 export const revalidate = 60;
