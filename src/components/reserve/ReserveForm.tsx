@@ -68,7 +68,7 @@ export function ReserveForm() {
       `Emri: ${name}\n` +
       `Tel: ${phone}`;
     
-    const waNumber = "38344123456"; // Room Lounge WhatsApp
+    const waNumber = "38343831111"; // Room Lounge WhatsApp
     const waUrl = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
     
     window.open(waUrl, "_blank");
