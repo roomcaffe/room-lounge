@@ -56,7 +56,7 @@ export function Footer() {
                 Tavolina jote të pret.
               </h3>
               <p className="mt-3 text-sm text-[color:var(--cream-soft)]/60">
-                Zgjedh datën, orën, dhe tavolinën. Konfirmim me WhatsApp brenda
+                Zgjedh datën, orën, numrin e personave dhe zonën. Konfirmim me WhatsApp brenda
                 pak minutash.
               </p>
               <Link

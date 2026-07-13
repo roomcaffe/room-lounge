@@ -20,7 +20,7 @@ export function FloatingActions() {
     pathname === "/reserve" || pathname?.startsWith("/admin");
   const wa = process.env.NEXT_PUBLIC_BUSINESS_WHATSAPP || "38344000000";
   const waLink = `https://wa.me/${wa}?text=${encodeURIComponent(
-    "Përshëndetje Room Lounge, dua të rezervoj një tavolinë."
+    "Përshëndetje Room Lounge, dua të bëj një rezervim."
   )}`;
 
   return (

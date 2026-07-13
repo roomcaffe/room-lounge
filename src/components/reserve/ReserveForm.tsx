@@ -2,11 +2,10 @@
 
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calendar, Clock, Users, Check, ArrowRight, ArrowLeft, MapPin, MessageCircle } from "lucide-react";
+import { Calendar, Clock, Users, Check, ArrowRight, ArrowLeft, MapPin } from "lucide-react";
 
 const ZONES = [
-  { id: "brenda", label: "Brenda", desc: "Ambiente e brendshme, klimatizuar" },
-  { id: "jashte", label: "Jashtë", desc: "Tarracë, ajër i pastër" },
+  { id: "brenda", label: "Brenda", desc: "Ambiente e brendshme, komode dhe e klimatizuar" },
 ] as const;
 
 type ZoneId = (typeof ZONES)[number]["id"];
@@ -40,7 +39,7 @@ export function ReserveForm() {
   const [date, setDate] = useState<Date | null>(null);
   const [time, setTime] = useState<string | null>(null);
   const [guests, setGuests] = useState(2);
-  const [zone, setZone] = useState<ZoneId | null>(null);
+  const [zone, setZone] = useState<ZoneId | null>("brenda");
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -239,10 +238,12 @@ export function ReserveForm() {
                   <MapPin className="text-[color:var(--brass)]" size={28} />
                   Ku dëshiron të ulesh?
                 </h3>
-                <p className="text-sm text-[color:var(--cream-soft)]/60">Zgjedh zonën</p>
+                <p className="text-sm text-[color:var(--cream-soft)]/60">
+                  Aktualisht rezervimet pranohen vetëm brenda.
+                </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-lg">
+              <div className="grid grid-cols-1 gap-4 w-full max-w-md">
                 {ZONES.map((z) => {
                   const isSelected = zone === z.id;
                   return (
