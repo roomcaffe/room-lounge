@@ -7,7 +7,7 @@ const schema = z.object({
   phone: z.string().min(6),
   whatsapp: z.string().min(6),
   date: z.string().min(1),
-  time: z.string().min(1),
+  time: z.string().regex(/^\d{2}:\d{2}$/, "Orar i pavlefshëm").refine((value) => value <= "20:30", "Rezervimet pranohen vetëm deri në 20:30"),
   guests: z.coerce.number().min(1).max(50),
   // Mbështet zonat e reja + ato të vjetra (backwards compat)
   area: z.enum(["main", "bar", "vip", "terrace", "indoor", "outdoor", "stage"]),
