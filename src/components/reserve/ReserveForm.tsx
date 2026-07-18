@@ -118,7 +118,7 @@ export function ReserveForm() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -16 }}
           transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="min-h-[400px]"
+          className="min-h-[320px] md:min-h-[400px]"
         >
           {step === 0 && (
             <div className="space-y-8">
@@ -187,7 +187,7 @@ export function ReserveForm() {
           )}
 
           {step === 1 && (
-            <div className="flex flex-col items-center justify-center min-h-[400px] gap-10">
+            <div className="flex flex-col items-center justify-center min-h-[320px] md:min-h-[400px] gap-8 md:gap-10">
               <div className="text-center">
                 <h3 className="text-display-md mb-1 flex items-center gap-3 justify-center">
                   <Users className="text-[color:var(--brass)]" size={28} />
@@ -233,7 +233,7 @@ export function ReserveForm() {
           )}
 
           {step === 2 && (
-            <div className="flex flex-col items-center justify-center min-h-[400px] gap-8">
+            <div className="flex flex-col items-center justify-center min-h-[320px] md:min-h-[400px] gap-6 md:gap-8">
               <div className="text-center">
                 <h3 className="text-display-md mb-1 flex items-center gap-3 justify-center">
                   <MapPin className="text-[color:var(--brass)]" size={28} />

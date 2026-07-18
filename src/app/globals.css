@@ -549,7 +549,7 @@ body.cursor-hover .cursor-ring {
 .container-edge {
   max-width: 1480px;
   margin: 0 auto;
-  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
 }
 
 /* Tap target safety */
