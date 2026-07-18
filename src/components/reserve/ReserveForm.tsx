@@ -12,9 +12,24 @@ const ZONES = [
 type ZoneId = (typeof ZONES)[number]["id"];
 
 const TIMES = [
-  "07:00", "08:00", "09:00", "10:00", "11:00", "12:00",
-  "13:00", "14:00", "15:00", "16:00", "17:00", "18:00",
-  "19:00", "20:00", "20:30",
+  { value: "07:00", disabled: false },
+  { value: "08:00", disabled: false },
+  { value: "09:00", disabled: false },
+  { value: "10:00", disabled: false },
+  { value: "11:00", disabled: false },
+  { value: "12:00", disabled: false },
+  { value: "13:00", disabled: false },
+  { value: "14:00", disabled: false },
+  { value: "15:00", disabled: false },
+  { value: "16:00", disabled: false },
+  { value: "17:00", disabled: false },
+  { value: "18:00", disabled: false },
+  { value: "19:00", disabled: false },
+  { value: "20:00", disabled: false },
+  { value: "20:30", disabled: false },
+  { value: "21:00", disabled: true },
+  { value: "22:00", disabled: true },
+  { value: "23:00", disabled: true },
 ];
 
 const STEPS = ["Kur", "Sa", "Ku", "Ti"] as const;
@@ -167,19 +182,27 @@ export function ReserveForm() {
                     Ora
                   </h3>
                   <div className="grid grid-cols-4 sm:grid-cols-5 md:grid-cols-6 gap-2">
-                    {TIMES.map((t) => (
-                      <button
-                        key={t}
-                        onClick={() => setTime(t)}
-                        className={`rounded-full py-3 text-sm font-mono transition-all duration-300 ${
-                          time === t
-                            ? "bg-[color:var(--brass)] text-[color:var(--obsidian)]"
-                            : "glass hover:bg-[color:var(--cream)]/8"
-                        }`}
-                      >
-                        {t}
-                      </button>
-                    ))}
+                    {TIMES.map((slot) => {
+                      const isSelected = time === slot.value;
+                      return (
+                        <button
+                          key={slot.value}
+                          onClick={() => !slot.disabled && setTime(slot.value)}
+                          disabled={slot.disabled}
+                          aria-label={slot.disabled ? `${slot.value} nuk pranohet për rezervim` : slot.value}
+                          title={slot.disabled ? "Nuk pranojmë rezervime pas 20:30" : undefined}
+                          className={`rounded-full py-3 text-sm font-mono transition-all duration-300 ${
+                            slot.disabled
+                              ? "glass opacity-35 cursor-not-allowed text-[color:var(--cream-soft)]/45 line-through"
+                              : isSelected
+                                ? "bg-[color:var(--brass)] text-[color:var(--obsidian)]"
+                                : "glass hover:bg-[color:var(--cream)]/8"
+                          }`}
+                        >
+                          {slot.value}
+                        </button>
+                      );
+                    })}
                   </div>
                 </motion.div>
               )}
