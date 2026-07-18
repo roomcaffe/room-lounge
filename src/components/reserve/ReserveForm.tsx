@@ -6,6 +6,7 @@ import { Calendar, Clock, Users, Check, ArrowRight, ArrowLeft, MapPin } from "lu
 
 const ZONES = [
   { id: "brenda", label: "Brenda", desc: "Ambiente e brendshme, komode dhe e klimatizuar" },
+  { id: "jashte", label: "Jashtë", desc: "Terasë / ambient i jashtëm për ajër dhe atmosferë të hapur" },
 ] as const;
 
 type ZoneId = (typeof ZONES)[number]["id"];
@@ -239,11 +240,11 @@ export function ReserveForm() {
                   Ku dëshiron të ulesh?
                 </h3>
                 <p className="text-sm text-[color:var(--cream-soft)]/60">
-                  Aktualisht rezervimet pranohen vetëm brenda.
+                  Zgjidh brenda ose jashtë, sipas atmosferës që dëshiron.
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 gap-4 w-full max-w-md">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-2xl">
                 {ZONES.map((z) => {
                   const isSelected = zone === z.id;
                   return (
